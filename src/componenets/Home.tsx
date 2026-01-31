@@ -4,7 +4,9 @@ function Home() {
   return (
    <>
    <Navbar/>
-   <h1>this is h1</h1>
+  <div className="bg-[url(../assets/homepagebg.jpeg)] h-auto bg-cover relative bg-center">
+      <div className="bg-gray-600/80 h-200"></div>
+  </div>
    </>
   )
 }
