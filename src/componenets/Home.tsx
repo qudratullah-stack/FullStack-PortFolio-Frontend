@@ -29,7 +29,7 @@ function Home() {
       "--chars": homeArray[arrayLength].text.length}}> {homeArray[arrayLength].text} </span>
 </div>
    <p className="mt-8 text-lg p-7 md:text-xl lg:text-3xl text-slate-200 max-w-3xl mx-auto leading-relaxed font-normal antialiased">
-  A <span className="text-cyan-400 font-medium">Full-Stack MERN Specialist</span> dedicated to building high-performance web applications. I bridge the gap between complex backend logic and intuitive user experiences to create <span className="text-white font-bold border-b border-cyan-500/30">scalable solutions</span> that drive real-world results.
+  A <span className="text-cyan-400 font-medium">Full-Stack MERN Specialist</span> dedicated to building high-performance web applications. I bridge the gap between complex backend logic and intuitive user experiences to create <span className="text-white font-bold  border-b-2 border-cyan-500/30">scalable solutions</span> that drive real-world results.
 </p>
       </div>
 </div>

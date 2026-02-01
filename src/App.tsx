@@ -4,6 +4,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import About from './componenets/About'
 import ContactUs from './componenets/ContactUs'
 import ProviderContext from './context/ProviderContext'
+import Admin from './componenets/Admin'
 function App() {
   return (
     <>
@@ -12,6 +13,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/about' element={<About/>}/>
+      <Route path='/admin/page' element={<Admin/>}/>
       <Route path='/contactUs' element={<ContactUs/>}/>
     
    </Routes>

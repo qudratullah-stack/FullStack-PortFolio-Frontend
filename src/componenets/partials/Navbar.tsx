@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import '../../style/index.css'
 import { useState } from "react"
 import MyContext from "../../context/CreateContext"
-import { useContext } from "react"
+import { useContext , useEffect} from "react"
 function Navbar() {
   const [toggle , setTogglebtn ] =useState(false)
   const [searchInput, setSearchInput] = useState(false)
@@ -17,9 +17,20 @@ function Navbar() {
       setDarkMode(prev => !prev)
  }
  const linkstyle = '    hover:text-gray-400  font-medium transition-colors  relative group hover:underline'
+ useEffect(() => {
+  if (darkMode) {
+    document.body.style.backgroundColor = "#111827"; 
+  } else {
+    document.body.style.backgroundColor = "rgb(223, 223, 223)";
+  }
+}, [darkMode]);
+let inputs = `  mt-4 p-3 rounded-lg border outline-none transition-all duration-300 ${darkMode 
+    ? "bg-gray-800 border-gray-700 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500" 
+    : "bg-gray-50 border-gray-300 text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+  }`
   return (
     <>
-<div className={`flex justify-between items-center px-3 h-25 py-4 gap-4 bg-cyan-700 shadow-lg ${darkMode && 'bg-gray-900 '} `}>
+<div className={`flex justify-between items-center px-3 h-25 py-4 gap-4 bg-cyan-700 shadow-lg ${darkMode && 'bg-gray-950 '} `}>
  <span className="flex gap-0.8 font-bold text-xl">
   {"</> MasoomCodes".split("").map((char, index) => (
     <span
@@ -35,17 +46,17 @@ function Navbar() {
   <div className="relative w-1/3 flex items-center">
   <input 
     type="text" 
-    className="responsiveInput w-full h-8.75 px-5 pr-10 rounded-full border-2 border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 shadow-sm placeholder-gray-400 text-gray-800 outline-none" 
+    className={ `responsiveInput w-full ${inputs}` }
     placeholder="Search..." 
   />
-  <span className={`responsiveInput absolute ${darkMode && 'text-white'} right-4 text-gray-800 text-2xl pointer-events-none`}>
+  <span className={`responsiveInput absolute ${darkMode && 'text-white'} right-4 top-6 text-gray-800 text-3xl pointer-events-none`}>
     ⌕
   </span>
 </div>
   {/* for Rsponsive Input */}
    {searchInput && <input 
   type="text" 
-  className=" absolute top-20 z-10 right-6 w-1/3 h-8.75 px-5 rounded-full border-2 border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 shadow-sm placeholder-gray-400 text-gray-800 outline-none" 
+  className={` absolute top-20 z-10 right-6 w-75 ${inputs}`} 
   placeholder="Search..." /> } 
   {/* Link parent Toggle btn */}
  <div className=" flex gap-3">
@@ -54,7 +65,7 @@ function Navbar() {
     </div>
 
 {/* Link container */}
-  <div className={` hidden  2xl:flex lg:flex lg:gap-6  xl:flex xl:gap-7 ${darkMode&&'bg-gray-900'} ${toggle ? `responsiveLink ${darkMode ?'bg-gray-900 text-white':'bg-white'}`:'' }`}>
+  <div className={` hidden  2xl:flex lg:flex lg:gap-6  xl:flex xl:gap-7  ${toggle ? `responsiveLink ${darkMode ?'bg-gray-950 text-white':'bg-white'}`:'' }`}>
     <Link
       to="/"
       className={`${linkstyle} ${darkMode?"text-white":'text-black'} `}>Home </Link>
@@ -77,6 +88,9 @@ function Navbar() {
        <Link
       to="/about"
       className={`${linkstyle} ${darkMode?"text-white":'text-black'} `}>Signup </Link>
+       <Link
+      to="/admin/page"
+      className={`${linkstyle} ${darkMode?"text-white":'text-black'} `}>Dashboard</Link>
   </div>
 
 </div>
