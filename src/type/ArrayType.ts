@@ -8,6 +8,10 @@ export const homeArray: arrayType[]= [
        { text: 'Scaling Digital Experiences'},
       {  text: 'Modern UI • Clean Code '}
 ]
+export interface problemType{
+    title: string,
+    solution: string
+}
 
 
 
