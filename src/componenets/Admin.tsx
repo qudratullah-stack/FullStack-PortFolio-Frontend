@@ -98,14 +98,14 @@ function Admin() {
             />
             <input
               type="text"
-              placeholder="Github Link"
+              placeholder="Vercel Link {First add https://}"
               value={vercelLink}
               onChange={(e) => setvercelLink(e.target.value)}
               className={inputStyle}
             />
             <input
               type="text"
-              placeholder="Vercel Link"
+              placeholder="Github Link "
               value={githubLink}
               onChange={(e) => setgithubLink(e.target.value)}
               className={inputStyle}

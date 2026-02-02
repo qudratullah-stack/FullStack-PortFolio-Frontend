@@ -1,8 +1,11 @@
 import Navbar from "./partials/Navbar"
 import { homeArray } from "../type/ArrayType"
 import { useState, useEffect ,useContext} from "react"
+import { useNavigate } from "react-router-dom"
+
 import MyContext from "../context/CreateContext"
 function Home() {
+  const navigate = useNavigate()
   const{darkMode, projectData} = useContext(MyContext)
   const [arrayLength ,  setArrayLength] = useState(0)
   const [showTable , setShowTable] = useState(false)
@@ -18,7 +21,7 @@ const tableRowStyle = `flex justify-between items-center p-4 border-b transition
 }`;
 
 
-const tableContainerStyle = `fixed top-0 right-0 h-full w-[350px] md:w-[450px] shadow-2xl z-50 transition-transform duration-500 ease-in-out ${
+const tableContainerStyle = `fixed top-0 right-0 h-auto w-[300px] xl:w-[500px]  md:w-[450px] shadow-2xl z-50 transition-transform duration-500 ease-in-out ${
   showTable ? "translate-x-0" : "translate-x-full"
 } ${darkMode ? "bg-gray-800 border-l border-gray-700" : "bg-white border-l border-gray-200"}`;
  
@@ -29,7 +32,7 @@ const tableContainerStyle = `fixed top-0 right-0 h-full w-[350px] md:w-[450px] s
    <Navbar/>
 
   <div className="bg-[url(../assets/homepagebg.jpeg)] h-auto bg-cover relative bg-center">
-      <div className={`${darkMode?'bg-gray-800/90':'bg-gray-700/80'} h-auto pb-4`}>
+      <div className={`${darkMode?'bg-gray-900/95':'bg-gray-900/90'} h-auto pb-4`}>
       <div className="h1-array-parent w-full p-5 h-auto py-20 flex flex-col justify-center items-center">
       <h1 className="font-bold text-2xl my-7 text-cyan-400 px-4 md:text-4xl lg:text-5xl xl:text-6xl items-center flex text-center">Welcome to  QudratMasoom</h1>
    
@@ -59,7 +62,9 @@ const tableContainerStyle = `fixed top-0 right-0 h-full w-[350px] md:w-[450px] s
       {projectData.map((item, index) => (
         <div key={index} className={tableRowStyle}>
           <span className="font-medium">{item.projectName}</span>
-          <button className="text-xs bg-cyan-600/20 text-cyan-500 px-3 py-1 rounded-full hover:bg-cyan-600 hover:text-white transition-all">
+          <button onClick={()=>{
+            navigate(`/allProjectdata/${item._id}`)
+          }} className="text-xs bg-cyan-600/20 text-cyan-500  px-3 py-1 rounded-full hover:bg-cyan-600 hover:text-white transition-all">
             View Details
           </button>
         </div>
