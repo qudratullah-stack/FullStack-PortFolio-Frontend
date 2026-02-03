@@ -8,6 +8,7 @@ const MyContext = createContext<contextTypes>({
     success:'',
     setSuccess: ()=>{},
     setloader: ()=>{},
-    loader: false
+    loader: false,
+    projectData: [],
 })
 export default MyContext

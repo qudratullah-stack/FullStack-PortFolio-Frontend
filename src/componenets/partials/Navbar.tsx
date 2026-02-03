@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import '../../style/index.css'
-import { useState } from "react"
+import { useRef, useState } from "react"
 import MyContext from "../../context/CreateContext"
 import { useContext , useEffect} from "react"
 function Navbar() {
@@ -21,13 +21,24 @@ function Navbar() {
   if (darkMode) {
     document.body.style.backgroundColor = "#111827"; 
   } else {
-    document.body.style.backgroundColor = "rgb(223, 223, 223)";
+    document.body.style.backgroundColor = "#F0F2F5";
   }
 }, [darkMode]);
 let inputs = `  mt-4 p-3 rounded-lg border outline-none transition-all duration-300 ${darkMode 
     ? "bg-gray-800 border-gray-700 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500" 
     : "bg-gray-50 border-gray-300 text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
   }`
+  const menuRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+  const closeMenu = (e:any) => {
+    if (toggle && menuRef.current && !menuRef.current.contains(e.target)) {
+      setTogglebtn(false);
+    }
+  };
+
+  document.addEventListener('mousedown', closeMenu);
+  return () => document.removeEventListener('mousedown', closeMenu);
+}, [toggle]);
   return (
     <>
 <div className={`flex justify-between items-center px-3 h-25 py-4 gap-4 bg-cyan-700 shadow-lg ${darkMode && 'bg-gray-950 '} `}>
@@ -65,7 +76,7 @@ let inputs = `  mt-4 p-3 rounded-lg border outline-none transition-all duration-
     </div>
 
 {/* Link container */}
-  <div className={` hidden  2xl:flex lg:flex lg:gap-6  xl:flex xl:gap-7  ${toggle ? `responsiveLink ${darkMode ?'bg-gray-950 text-white':'bg-white'}`:'' }`}>
+  <div ref={menuRef} className={` hidden  2xl:flex lg:flex lg:gap-6  xl:flex xl:gap-7  ${toggle ? `responsiveLink  ${darkMode ?'bg-gray-800 text-white':'bg-white'}`:'' }`}>
     <Link
       to="/"
       className={`${linkstyle} ${darkMode?"text-white":'text-black'} `}>Home </Link>

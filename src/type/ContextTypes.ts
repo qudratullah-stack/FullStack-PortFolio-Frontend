@@ -8,7 +8,6 @@ export interface contextTypes{
     setSuccess: Dispatch<SetStateAction<string>>,
     loader:boolean, 
     setloader: Dispatch<SetStateAction<boolean>> ,
-    setProjectData:  Dispatch<SetStateAction<any[]>>
     projectData: any[]
 
 }
