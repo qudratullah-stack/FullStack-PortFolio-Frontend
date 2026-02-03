@@ -8,6 +8,12 @@ export interface contextTypes{
     setSuccess: Dispatch<SetStateAction<string>>,
     loader:boolean, 
     setloader: Dispatch<SetStateAction<boolean>> ,
-    projectData: any[]
-
+    projectData: any[],
+    contactName : string, 
+    setContactName: Dispatch<SetStateAction<string>>
+    contactEmail: string,
+     setContactEmail:  Dispatch<SetStateAction<string>>
+     contactMessage : string, 
+     setContactMessage:  Dispatch<SetStateAction<string>>
+     contactUs: ()=> Promise<void>
 }

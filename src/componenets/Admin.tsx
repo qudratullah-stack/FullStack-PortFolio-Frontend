@@ -1,6 +1,5 @@
 import MyContext from "../context/CreateContext";
 import { useContext, useState } from "react";
-import Navbar from "./partials/Navbar";
 import axios from "axios";
 import { type problemType } from "../type/ArrayType";
 import Loading from "./partials/Loading";
@@ -75,7 +74,7 @@ function Admin() {
   return (
     <>
       {alert && <Alert message={success} darkMode={darkMode} />}
-      <Navbar />
+    
       <div
         className={`project flex flex-col w-full items-center min-h-screen p-7 transition-colors duration-500 ${darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"}`}
       >

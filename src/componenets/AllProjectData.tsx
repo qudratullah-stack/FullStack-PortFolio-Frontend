@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import MyContext from "../context/CreateContext";
 import { useContext } from "react";
-import Navbar from "./partials/Navbar";
+
 import {
   ExternalLink,
   Github,
@@ -25,7 +25,7 @@ function AllProjectData() {
   }
   return (
     <>
-      <Navbar />
+   
       <main className="max-w-4xl mx-auto px-4 py-10">
         {/* Back Button & Dark Mode Toggle Style */}
         <div className="flex justify-between items-center mb-8">

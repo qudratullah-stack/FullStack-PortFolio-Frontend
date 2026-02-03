@@ -12,7 +12,3 @@ export interface problemType{
     title: string,
     solution: string
 }
-
-
-
-

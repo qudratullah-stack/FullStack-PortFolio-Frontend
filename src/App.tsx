@@ -6,11 +6,13 @@ import ContactUs from './componenets/ContactUs'
 import ProviderContext from './context/ProviderContext'
 import Admin from './componenets/Admin'
 import AllProjectData from './componenets/AllProjectData'
+import Navbar from './componenets/partials/Navbar'
 function App() {
   return (
     <>
     <BrowserRouter>
       <ProviderContext>
+        <Navbar/>
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/about' element={<About/>}/>

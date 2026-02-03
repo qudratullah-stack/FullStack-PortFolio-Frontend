@@ -8,6 +8,9 @@ function ProviderContext({children}:{children:React.ReactNode}) {
     const [loader , setloader] = useState(false)
     const [success, setSuccess] = useState('')
     const [projectData , setProjectData] = useState<any[]>([]) 
+    const [contactName , setContactName] = useState('')
+    const [contactEmail, setContactEmail] = useState('')
+    const [contactMessage , setContactMessage] = useState('')
   const getpojectdata = async ()=>{
     try{
       setloader(true)
@@ -15,8 +18,6 @@ function ProviderContext({children}:{children:React.ReactNode}) {
        
     const newdata = res.data.getresponse
     setProjectData(newdata)
-    setAlert(true)
-    setSuccess('Data Get Succeffully')
     }catch(err){
       setAlert(true)
       setSuccess('Failed get data')
@@ -27,16 +28,32 @@ function ProviderContext({children}:{children:React.ReactNode}) {
   useEffect(()=>{
     getpojectdata()
   },[])
-   useEffect(()=>{
+  
+    const contactUs = async()=>{
+      try{
+        setloader(true)
+        await axios.post('http://localhost:9000/admin/contactus',{
+          name: contactName,
+           email: contactEmail,
+            message : contactMessage
+        })
+        setSuccess('Message Send Successfully')
+      }catch(err){
+        setAlert(true)
+        setSuccess("Message Can't Send ")
+      }finally{
+        setloader(false)
+      }
+    }
+     useEffect(()=>{
   if(alert){
   const intervel =   setInterval(() => {
       setAlert(false)
-    }, 4000);
+    }, 8000);
     return ()=> clearInterval(intervel)}
    },[alert])
-    
   return (
-    <MyContext.Provider value={{darkMode ,projectData, setDarkMode, alert, setAlert,loader,setloader, success, setSuccess}}>
+    <MyContext.Provider value={{darkMode ,projectData, setDarkMode, alert, setAlert,loader,setloader, success, setSuccess, contactName, setContactName, contactEmail, setContactEmail , contactMessage, setContactMessage,contactUs}}>
 
         {children}
 
