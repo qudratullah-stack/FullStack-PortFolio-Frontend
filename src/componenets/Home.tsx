@@ -1,17 +1,19 @@
 
 import { homeArray } from "../type/ArrayType";
 import { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import MyContext from "../context/CreateContext";
 import { skillsData } from "./partials/Array";
 import { services } from "./partials/Array";
 import aboutImage from "../assets/homepagebg.jpeg";
 import ContectForm from './partials/ContectForm'
+import Footer from "./partials/Footer";
+import Services from "./partials/Services";
+import ScrollTable from "./partials/ScrollTable";
 function Home() {
-  const navigate = useNavigate();
-  const { darkMode, projectData , } = useContext(MyContext);
+ 
+  const { darkMode,  isServiceOpen , showTable, setShowTable } = useContext(MyContext);
   const [arrayLength, setArrayLength] = useState(0);
-  const [showTable, setShowTable] = useState(false);
+ 
   useEffect(() => {
     const intervel = setInterval(() => {
       setArrayLength((prev) => (prev + 1) % homeArray.length);
@@ -19,16 +21,7 @@ function Home() {
     return () => clearInterval(intervel);
   }, []);
 
-  const tableRowStyle = `flex justify-between items-center p-4 border-b transition-all duration-300 ${
-    darkMode
-      ? "border-gray-700 hover:bg-gray-700/50 text-gray-300"
-      : "border-gray-100 hover:bg-gray-50 text-gray-600"
-  }`;
-
-  const tableContainerStyle = `fixed top-0 right-0 h-full w-[300px] xl:w-[500px]  md:w-[450px] shadow-2xl z-50 transition-transform duration-500 ease-in-out ${
-    showTable ? "translate-x-0" : "translate-x-full"
-  } ${darkMode ? " bg-gray-800 border-l border-gray-700" : "bg-white border-l border-gray-200"}`;
-   
+  
   return (
     <>
 
@@ -75,38 +68,7 @@ function Home() {
             >
               📋 View Projects
             </button>
-            <div className={tableContainerStyle}>
-              <div className="flex flex-col h-full">
-                <div className="p-6 border-b border-gray-500/20 flex justify-between items-center">
-                  <h3
-                    className={`font-bold ${darkMode ? "text-white" : "text-black"} text-xl`}
-                  >
-                    All Projects
-                  </h3>
-                  <button
-                    onClick={() => setShowTable(false)}
-                    className="text-red-500 hover:scale-110"
-                  >
-                    ✕
-                  </button>
-                </div>
-                <div className="flex-1 overflow-y-auto custom-scrollbar p-2">
-                  {projectData.map((item, index) => (
-                    <div key={index} className={tableRowStyle}>
-                      <span className="font-medium">{item.projectName}</span>
-                      <button
-                        onClick={() => {
-                          navigate(`/allProjectdata/${item._id}`);
-                        }}
-                        className="text-xs bg-cyan-600/20 text-cyan-500  px-3 py-1 rounded-full hover:bg-cyan-600 hover:text-white transition-all"
-                      >
-                        View Details
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+          {showTable && <ScrollTable/>}
           </div>
         </div>
       </div>
@@ -257,6 +219,7 @@ function Home() {
           </div>
         </div>
       </section>
+      {isServiceOpen && <Services/>}
         <hr
         className={`${darkMode ? "text-gray-600" : "text-gray-300"} w-[70%] mx-auto`}/>
         <div className="flex flex-col lg:flex-row p-11 gap-14 w-full">
@@ -287,6 +250,8 @@ function Home() {
 </div>
 
         </div>
+        <Footer showtable = {setShowTable}/>
+
     </>
   );
 }

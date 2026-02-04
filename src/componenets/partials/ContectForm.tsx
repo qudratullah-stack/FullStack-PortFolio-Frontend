@@ -1,5 +1,5 @@
 import MyContext from "../../context/CreateContext"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import Alert from "./Alert";
 
 function ContectForm() {
@@ -7,17 +7,26 @@ function ContectForm() {
     contactName, setContactName, 
     contactEmail, setContactEmail, 
     contactMessage, setContactMessage, 
-    contactUs, loader, success , alert, darkMode, 
+    contactUs, loader, success , alert, darkMode, setAlert, setSuccess
   } = useContext(MyContext)
+  const [inputborder, setInputborder] = useState(false)
     const handleSubmit = (e:any) => {
-    e.preventDefault();
+      e.preventDefault();
+       let inputtextmatch = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+       if(!inputtextmatch.test(contactEmail)){
+        setInputborder(true)
+        setAlert(true)
+        setSuccess('Please enter a valid email address')
+        return
+       }
     contactUs();
     setContactEmail('')
     setContactName('')
     setContactMessage('')
    
   };
-  const inputStyle = `w-full flex  p-3 ${darkMode?'bg-gray-800 text-white':'bg-gray-300 text-black'} border border-gray-700 rounded-lg  focus:outline-none focus:border-blue-500 transition-all`
+ 
+  const inputStyle = `w-full flex  p-3 ${darkMode?'bg-gray-800 text-white':'bg-gray-300 text-black'} border   rounded-lg  focus:outline-none focus:border-blue-500 transition-all`
   return (
     <>
      {alert && <Alert message={success} darkMode={darkMode} />}
@@ -43,10 +52,11 @@ function ContectForm() {
             placeholder="Your Email"
             value={contactEmail}
             onChange={(e) => setContactEmail(e.target.value)}
-            className={inputStyle}
+            className={`${inputStyle} ${inputborder?'border-red-600':'border-gray-700'}`}
             required
             
           />
+          
         </div>
 
         <div>

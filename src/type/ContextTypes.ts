@@ -16,4 +16,6 @@ export interface contextTypes{
      contactMessage : string, 
      setContactMessage:  Dispatch<SetStateAction<string>>
      contactUs: ()=> Promise<void>
+     isServiceOpen : boolean , 
+     setisServiceOpen:  Dispatch<SetStateAction<boolean>>
 }

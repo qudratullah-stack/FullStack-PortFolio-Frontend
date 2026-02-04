@@ -16,6 +16,10 @@ const MyContext = createContext<contextTypes>({
   setContactEmail: () => {},
   contactMessage: "",
   setContactMessage: () => {},
-  contactUs: async ()=>{}
+  contactUs: async ()=>{},
+  isServiceOpen: false,
+  setisServiceOpen: ()=>{},
+   showTable: false, 
+     setShowTable: ()=>{}
 });
 export default MyContext;
