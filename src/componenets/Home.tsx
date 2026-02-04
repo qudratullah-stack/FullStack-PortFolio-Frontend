@@ -259,7 +259,34 @@ function Home() {
       </section>
         <hr
         className={`${darkMode ? "text-gray-600" : "text-gray-300"} w-[70%] mx-auto`}/>
+        <div className="flex flex-col lg:flex-row p-11 gap-14 w-full">
       <ContectForm/>
+      <div className={` flex-1  p-6 ${darkMode?'bg-gray-900 border-gray-800':'bg-white border-gray-400'} border  rounded-2xl flex flex-col justify-center space-y-6`}>
+  <div>
+    <p className="text-cyan-600 text-xs uppercase tracking-widest mb-2">Location</p>
+    <h3 className={`${darkMode?'text-white': 'text-black'} text-xl font-medium flex items-center`}>
+      <span className="mr-2">📍</span> Lahore, Pakistan
+    </h3>
+  </div>
+  <div className="p-4 bg-gray-800 rounded-xl border border-green-900/30">
+    <div className="flex items-center space-x-3">
+      <span className="relative flex h-3 w-3">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+      </span>
+      <p className="text-green-400 font-medium tracking-wide">Available for Projects</p>
+    </div>
+    <p className="text-gray-400 text-xs mt-2 leading-relaxed">
+      I'm currently open to freelance opportunities and full-time roles.
+    </p>
+  </div>
+  <div>
+    <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">Local Time</p>
+    <p className={`${darkMode?'text-white':'text-black'} font-mono`}>{new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} (GMT+5)</p>
+  </div>
+</div>
+
+        </div>
     </>
   );
 }

@@ -7,7 +7,7 @@ function ContectForm() {
     contactName, setContactName, 
     contactEmail, setContactEmail, 
     contactMessage, setContactMessage, 
-    contactUs, loader, success , alert, darkMode, setAlert
+    contactUs, loader, success , alert, darkMode, 
   } = useContext(MyContext)
     const handleSubmit = (e:any) => {
     e.preventDefault();
@@ -17,11 +17,11 @@ function ContectForm() {
     setContactMessage('')
    
   };
-  const inputStyle = `w-full p-3 ${darkMode?'bg-gray-800 text-white':'bg-gray-300 text-black'} border border-gray-700 rounded-lg  focus:outline-none focus:border-blue-500 transition-all`
+  const inputStyle = `w-full flex  p-3 ${darkMode?'bg-gray-800 text-white':'bg-gray-300 text-black'} border border-gray-700 rounded-lg  focus:outline-none focus:border-blue-500 transition-all`
   return (
     <>
      {alert && <Alert message={success} darkMode={darkMode} />}
-     <div className={`max-w-md mx-auto p-8 ${darkMode?'bg-gray-900 border-gray-800': 'bg-white border-gray-400'}  border rounded-2xl shadow-xl`}>
+     <div className={` flex-1  p-8 ${darkMode?'bg-gray-900 border-gray-800': 'bg-white border-gray-400'}  border rounded-2xl shadow-xl`}>
       <h2 className={`text-2xl font-bold ${darkMode? 'text-white':'text-black'} mb-6 text-center`}>Get In Touch</h2>
       
       <form onSubmit={handleSubmit} className="space-y-5 relative">
