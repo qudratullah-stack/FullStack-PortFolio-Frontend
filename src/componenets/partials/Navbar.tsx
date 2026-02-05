@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import '../../style/index.css'
 import { useRef, useState } from "react"
 import MyContext from "../../context/CreateContext"
+import NavbarDropdown from "./NavbarDropdown"
 import { useContext , useEffect} from "react"
 function Navbar() {
   const [toggle , setTogglebtn ] =useState(false)
@@ -41,7 +42,7 @@ let inputs = `  mt-4 p-3 rounded-lg border outline-none transition-all duration-
 }, [toggle]);
   return (
     <>
-<div className={`flex justify-between items-center px-3 h-25 py-4 gap-4 bg-cyan-700 shadow-lg ${darkMode && 'bg-gray-950 '} `}>
+<div className={`flex justify-between items-center px-3 h-25 py-4 gap-3 bg-cyan-700 shadow-lg ${darkMode && 'bg-gray-950 '} `}>
  <span className="flex gap-0.8 font-bold text-xl">
   {"</> MasoomCodes".split("").map((char, index) => (
     <span
@@ -86,12 +87,7 @@ let inputs = `  mt-4 p-3 rounded-lg border outline-none transition-all duration-
     <Link
       to="/about"
       className={`${linkstyle} ${darkMode?"text-white":'text-black'} `} >About </Link>
-       <Link
-      to="/learning"
-      className={`${linkstyle} ${darkMode?"text-white":'text-black'} `} >Learning </Link>
-       <Link
-      to="/blog"
-      className={` ${darkMode?"text-white":'text-black'} `} >blogs</Link>
+        <NavbarDropdown />
       <button onClick={handleDarkMode} className={`${darkMode && 'text-white'} ${linkstyle} text-2xl hover:cursor-pointer`}>{darkMode?'☼':'☾'}</button>
        <Link
       to="/about"

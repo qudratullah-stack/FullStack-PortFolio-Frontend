@@ -1,9 +1,13 @@
 import MyContext from "../../context/CreateContext"
 import { useContext , useState} from "react"
 import educationalblog from '../Json/educational.json'
-
+import { useNavigate } from "react-router-dom"
+import Services from "../partials/Services"
+import ScrollTable from "../partials/ScrollTable"
+import Footer from "../partials/Footer"
 function Educational() {
-    const {darkMode} = useContext(MyContext)
+    const navigate = useNavigate()
+    const {darkMode, showTable, setShowTable , isServiceOpen} = useContext(MyContext)
      const [pagelength , setPagelength] = useState(1)
         const [addIndex , setaddIndex] = useState('→ Read More')
         const [lessIndex , setLessIndex] = useState('← Previous')
@@ -74,7 +78,7 @@ function Educational() {
             </div>
           ))}
         </div>
-        <div className="mt-auto">
+        <div onClick={()=>{navigate(`/learningblogdetail/${item.id}`)}} className="mt-auto">
           <button className={`w-full font-bold py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 border ${
             darkMode 
             ? 'bg-green-600/10 text-green-500 border-green-500/20 hover:bg-green-600 hover:text-white' 
@@ -100,6 +104,9 @@ function Educational() {
             : 'bg-cyan-200 text-cyan-600 border-cyan-100 hover:bg-cyan-600 hover:text-white'
           }`} onClick={handleLess}> {lessIndex}</button> 
     </div>
+   {isServiceOpen && <Services/>}
+   {showTable && <ScrollTable/>}
+    <Footer showtable={setShowTable}/>
   </>
   )
 }
