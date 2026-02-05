@@ -18,4 +18,6 @@ export interface contextTypes{
      contactUs: ()=> Promise<void>
      isServiceOpen : boolean , 
      setisServiceOpen:  Dispatch<SetStateAction<boolean>>
+     showTable: boolean, 
+     setShowTable: Dispatch<SetStateAction<boolean>>
 }

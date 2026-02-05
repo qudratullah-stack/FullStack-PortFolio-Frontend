@@ -54,7 +54,7 @@ let inputs = `  mt-4 p-3 rounded-lg border outline-none transition-all duration-
     </span>
   ))}
 </span>
-   {/* Search Input */}
+
   <div className="relative w-1/3 flex items-center">
   <input 
     type="text" 
@@ -65,18 +65,16 @@ let inputs = `  mt-4 p-3 rounded-lg border outline-none transition-all duration-
     ⌕
   </span>
 </div>
-  {/* for Rsponsive Input */}
+
    {searchInput && <input 
   type="text" 
   className={` absolute top-20 z-10 right-6 w-75 ${inputs}`} 
   placeholder="Search..." /> } 
-  {/* Link parent Toggle btn */}
+
  <div className=" flex gap-3">
    <span className={`classIcon hidden text-4xl ${darkMode && 'text-white'}`}onClick={handleSearchInput}>⌕</span>
     <button onClick={handleToggle} className=" togglebtn lg:hidden xl:hidden 2xl:hidden  font-bold text-2xl text-white ">☰</button>
     </div>
-
-{/* Link container */}
   <div ref={menuRef} className={` hidden  2xl:flex lg:flex lg:gap-6  xl:flex xl:gap-7  ${toggle ? `responsiveLink  ${darkMode ?'bg-gray-800 text-white':'bg-white'}`:'' }`}>
     <Link
       to="/"

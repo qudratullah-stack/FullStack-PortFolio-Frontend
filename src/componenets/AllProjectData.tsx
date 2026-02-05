@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import MyContext from "../context/CreateContext";
 import { useContext } from "react";
-
 import {
   ExternalLink,
   Github,

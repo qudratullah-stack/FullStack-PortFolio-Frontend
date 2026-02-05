@@ -1,5 +1,5 @@
 import { 
-  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaBootstrap,FaGithub,
+  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaBootstrap,FaGithub, FaChevronLeft, FaChevronRight, FaCode, FaUser, FaRocket, FaDatabase, FaLaptopCode 
 } from 'react-icons/fa';
 import { AiOutlineApi } from 'react-icons/ai';
 import { 
@@ -64,3 +64,53 @@ export const services = [
   }
 ];
 
+export const slides = [
+  {
+    id: 1,
+    type: "hero",
+    title: "Qudratullah",
+    subtitle: "Full-Stack Web Architect",
+    desc: "Crafting high-performance, scalable web applications with modern technologies and a focus on user experience.",
+    icon: <FaUser className="text-7xl text-blue-500" />
+  },
+  {
+    id: 2,
+    type: "skills",
+    title: "Technical Expertise",
+    skills: [
+      { name: "React.js / Next.js", level: 95, color: "bg-blue-500" },
+      { name: "Node.js & Express", level: 85, color: "bg-green-500" },
+      { name: "MongoDB / SQL", level: 80, color: "bg-emerald-500" },
+      { name: "Tailwind CSS / UI Design", level: 92, color: "bg-cyan-500" },
+      { name: "TypeScript / JavaScript", level: 90, color: "bg-yellow-500" }
+    ]
+  },
+  {
+    id: 3,
+    type: "info",
+    title: "Core Services",
+    items: [
+      { icon: <FaLaptopCode />, title: "Frontend Development", text: "Pixel-perfect, responsive interfaces built with React and Tailwind." },
+      { icon: <FaDatabase />, title: "Backend Solutions", text: "Secure and scalable server-side architectures using Node and Express." },
+      { icon: <FaRocket />, title: "Optimization", text: "SEO-friendly and lightning-fast web applications for global reach." }
+    ]
+  },
+  {
+    id: 4,
+    type: "experience",
+    title: "Why Hire Me?",
+    items: [
+      { icon: <FaCode />, title: "Clean Code", text: "I write maintainable and well-documented code for long-term scalability." },
+      { icon: <FaUser />, title: "User Centric", text: "I design with the end-user in mind to ensure maximum engagement." },
+      { icon: <FaRocket />, title: "Fast Delivery", text: "Agile development process to deliver quality results in record time." }
+    ]
+  },
+  {
+    id: 5,
+    type: "mission",
+    title: "My Mission",
+    subtitle: "Building the Future",
+    desc: "My mission is to help businesses grow by providing innovative digital solutions that solve real-world problems. Let's build something extraordinary together.",
+    icon: <FaRocket className="text-7xl text-blue-600" />
+  }
+];
