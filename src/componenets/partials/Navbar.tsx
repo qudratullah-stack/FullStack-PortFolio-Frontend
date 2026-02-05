@@ -87,8 +87,8 @@ let inputs = `  mt-4 p-3 rounded-lg border outline-none transition-all duration-
       to="/about"
       className={`${linkstyle} ${darkMode?"text-white":'text-black'} `} >About </Link>
        <Link
-      to="/about"
-      className={`${linkstyle} ${darkMode?"text-white":'text-black'} `} >Tortoils </Link>
+      to="/learning"
+      className={`${linkstyle} ${darkMode?"text-white":'text-black'} `} >Learning </Link>
        <Link
       to="/blog"
       className={` ${darkMode?"text-white":'text-black'} `} >blogs</Link>

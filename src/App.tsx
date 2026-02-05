@@ -8,6 +8,7 @@ import Admin from './componenets/Admin'
 import AllProjectData from './componenets/AllProjectData'
 import Navbar from './componenets/partials/Navbar'
 import Blogs from './componenets/Blogs/Blogs'
+import Educational from './componenets/Blogs/Educational'
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
       <Route path='/admin/page' element={<Admin/>}/>
       <Route path='/contactUs' element={<ContactUs/>}/>
       <Route path='/blog' element={<Blogs/>}/>
+      <Route path='/learning' element={<Educational/>}/>
       <Route path='/allProjectdata/:id' element={<AllProjectData/>}/>
     
    </Routes>

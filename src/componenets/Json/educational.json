@@ -159,7 +159,7 @@
     "title": "State Management with Redux Toolkit (RTK)",
     "category": "Advanced React",
     "date": "Feb 06, 2026",
-    "image": "https://images.unsplash.com/photo-1618477239173-9b163e6e1e8b?q=80&w=500",
+    "image": "https://media.istockphoto.com/id/1143541081/photo/world-globe-character-holding-toolbox.webp?a=1&b=1&s=612x612&w=0&k=20&c=5uOpN8g3YU4jDT_q4Qwpu1VPU24G7iemh7c7HNd-9HE=",
     "description": "Why Redux Toolkit is the industry standard for managing global state in large scale apps.",
     "mainPoints": [
       "Simplified Store setup and Slices",
@@ -227,7 +227,7 @@
     "title": "Writing Clean Code: The SOLID Principles",
     "category": "Software Engineering",
     "date": "Feb 04, 2026",
-    "image": "https://images.unsplash.com/photo-1542831371-d53b5849717d?q=80&w=500",
+    "image": "https://plus.unsplash.com/premium_photo-1676150789916-2c7d1fdda6b9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8V3JpdGluZyUyMENsZWFuJTIwQ29kZSUzQSUyMFRoZSUyMFNPTElEJTIwUHJpbmNpcGxlc3xlbnwwfHwwfHx8MA%3D%3D",
     "description": "Code is read more often than it is written. Learn how to make it readable.",
     "mainPoints": [
       "Meaningful variable and function naming",
