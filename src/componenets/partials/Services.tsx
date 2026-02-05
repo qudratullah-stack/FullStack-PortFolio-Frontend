@@ -5,12 +5,12 @@ function Services() {
     const {darkMode, setisServiceOpen } = useContext(MyContext)
   return (
     <>
-   
-  <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-    <div className={`relative w-full max-w-2xl p-8 rounded-3xl shadow-2xl border ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'}`}>
+   <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto h-screen py-10">
+    <div className={`relative w-full max-w-2xl p-8 rounded-3xl shadow-2xl border max-h-[90vh] overflow-y-auto ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'}`}>
     
       <h2 className={`text-3xl font-bold mb-6 text-center ${darkMode ? 'text-white' : 'text-black'}`}>My Services</h2>
-      <span className="absolute text-4xl cursor-pointer hover:text-red-900 text-red-600 top-5 right-6 " onClick={()=> setisServiceOpen(false)}>  ✕ </span>
+      <span className="absolute text-4xl cursor-pointer hover:text-red-900 text-red-600 top-5 right-6" onClick={()=> setisServiceOpen(false)}>  ✕ </span>
+      
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Service 1 */}
         <div className={`p-5 rounded-2xl border ${darkMode ? 'bg-gray-800/50 border-gray-700' : 'bg-gray-50 border-gray-200'}`}>
@@ -41,8 +41,7 @@ function Services() {
         </div>
       </div>
     </div>
-  </div>
-
+</div>
     </>
   )
 }

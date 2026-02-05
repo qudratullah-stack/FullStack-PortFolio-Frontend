@@ -222,7 +222,7 @@ function Home() {
       {isServiceOpen && <Services/>}
         <hr
         className={`${darkMode ? "text-gray-600" : "text-gray-300"} w-[70%] mx-auto`}/>
-        <div className="flex flex-col lg:flex-row p-11 gap-14 w-full">
+        <div className="flex flex-col lg:flex-row p-5 lg:p-11 gap-14 w-full">
       <ContectForm/>
       <div className={` flex-1  p-6 ${darkMode?'bg-gray-900 border-gray-800':'bg-white border-gray-400'} border  rounded-2xl flex flex-col justify-center space-y-6`}>
   <div>

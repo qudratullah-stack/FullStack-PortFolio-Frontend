@@ -71,7 +71,7 @@ let inputs = `  mt-4 p-3 rounded-lg border outline-none transition-all duration-
   placeholder="Search..." /> } 
   {/* Link parent Toggle btn */}
  <div className=" flex gap-3">
-   <span className={`classIcon hidden text-2xl ${darkMode && 'text-white'}`}onClick={handleSearchInput}>⌕</span>
+   <span className={`classIcon hidden text-4xl ${darkMode && 'text-white'}`}onClick={handleSearchInput}>⌕</span>
     <button onClick={handleToggle} className=" togglebtn lg:hidden xl:hidden 2xl:hidden  font-bold text-2xl text-white ">☰</button>
     </div>
 
@@ -90,8 +90,8 @@ let inputs = `  mt-4 p-3 rounded-lg border outline-none transition-all duration-
       to="/about"
       className={`${linkstyle} ${darkMode?"text-white":'text-black'} `} >Tortoils </Link>
        <Link
-      to="/about"
-      className={` ${darkMode?"text-white":'text-black'} `} >blog</Link>
+      to="/blog"
+      className={` ${darkMode?"text-white":'text-black'} `} >blogs</Link>
       <button onClick={handleDarkMode} className={`${darkMode && 'text-white'} ${linkstyle} text-2xl hover:cursor-pointer`}>{darkMode?'☼':'☾'}</button>
        <Link
       to="/about"

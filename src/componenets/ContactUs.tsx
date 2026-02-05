@@ -10,7 +10,7 @@ function ContactUs() {
   const {darkMode , setShowTable, isServiceOpen, showTable} = useContext(MyContext)
   return (
   <>
-  <div className={`min-h-screen p-6 lg:p-12 ${darkMode ? '#111827 text-white' : 'bg-gray-50 text-black'}`}>
+  <div className={`min-h-screen  lg:p-12 ${darkMode ? '#111827 text-white' : '#F0F2F5 text-black'}`}>
   <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start gap-12 mt-10">
     
     <div className="w-full lg:w-1/3 flex flex-col items-center">
@@ -50,7 +50,7 @@ function ContactUs() {
       </div>
     </div>
     <div className="w-full lg:flex-1">
-      <div className={`p-8 flex flex-col justify-center' }`}>
+      <div className={`p-8 flex flex-col w-full justify-center' }`}>
          <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-10 items-center text-center">Let's Work Together</h2>
        <ContectForm/>
       </div>

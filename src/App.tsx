@@ -7,6 +7,7 @@ import ProviderContext from './context/ProviderContext'
 import Admin from './componenets/Admin'
 import AllProjectData from './componenets/AllProjectData'
 import Navbar from './componenets/partials/Navbar'
+import Blogs from './componenets/Blogs/Blogs'
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
       <Route path='/about' element={<About/>}/>
       <Route path='/admin/page' element={<Admin/>}/>
       <Route path='/contactUs' element={<ContactUs/>}/>
+      <Route path='/blog' element={<Blogs/>}/>
       <Route path='/allProjectdata/:id' element={<AllProjectData/>}/>
     
    </Routes>
