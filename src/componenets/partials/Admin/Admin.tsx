@@ -1,11 +1,13 @@
-import MyContext from "../context/CreateContext";
+import MyContext from "../../../context/CreateContext";
 import { useContext, useState } from "react";
 import axios from "axios";
-import { type problemType } from "../type/ArrayType";
-import Loading from "./partials/Loading";
-import Alert from "./partials/Alert";
+import { type problemType } from "../../../type/ArrayType";
+import Loading from "../Loading";
+import Alert from "../Alert";
+import GrowthData from "./GrowthData";
 function Admin() {
   const [showTable , setShowTable] = useState(false)
+  const [GrowthTable , setGrowthTable] = useState(false)
   // document style //////////
   const { darkMode, alert, success, setSuccess, setAlert, loader, setloader } =
     useContext(MyContext);
@@ -147,7 +149,7 @@ function Admin() {
               onChange={(e) => setsolution(e.target.value)}
               className={`${inputStyle} h-32 resize-none`}
             ></textarea>
-            <button onClick={handleAddmoreproblems}>Add More</button>
+            <button className="border-cyan-300 p-2 my-2 hover:bg-cyan-700 cursor-pointer hover:text-white bg-cyan-600 rounded-4xl" onClick={handleAddmoreproblems}>Add More</button>
           </div>
 
           <button
@@ -178,10 +180,11 @@ function Admin() {
                   </button>
                 </div>
                 <div className="flex-1 overflow-y-auto custom-scrollbar p-2">
-                
                 </div>
               </div>
             </div>
+            <button  onClick={()=>{setGrowthTable(true)}}>Add GrowthData</button>
+             <GrowthData show = {GrowthTable} setShow = {setGrowthTable}/>
     </>
   );
 }

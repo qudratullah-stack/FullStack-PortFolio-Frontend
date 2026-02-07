@@ -4,13 +4,14 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import About from './componenets/About'
 import ContactUs from './componenets/ContactUs'
 import ProviderContext from './context/ProviderContext'
-import Admin from './componenets/Admin'
+import Admin from './componenets/partials/Admin/Admin'
 import AllProjectData from './componenets/AllProjectData'
 import Navbar from './componenets/partials/Navbar'
 import Blogs from './componenets/Blogs/Blogs'
 import Educational from './componenets/Blogs/Educational'
 import DetailBlogs from './componenets/Blogs/DetailBlogs'
 import DetailEducational from './componenets/Blogs/DetailEducational'
+import GrowthTimeline from './componenets/partials/GrowthTimeline'
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
       <Route path='/blog' element={<Blogs/>}/>
       <Route path='/learning' element={<Educational/>}/>
       <Route path='/detailblogs/:id' element={<DetailBlogs/>}/>
+      <Route path='/growthtimeline' element={<GrowthTimeline/>}/>
       <Route path='/learningblogdetail/:id' element={<DetailEducational/>}/>
       <Route path='/allProjectdata/:id' element={<AllProjectData/>}/>
     

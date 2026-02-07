@@ -11,7 +11,7 @@ import Services from "./partials/Services";
 import ScrollTable from "./partials/ScrollTable";
 function Home() {
  
-  const { darkMode,  isServiceOpen , showTable, setShowTable } = useContext(MyContext);
+  const { darkMode,  isServiceOpen ,  setShowTable } = useContext(MyContext);
   const [arrayLength, setArrayLength] = useState(0);
  
   useEffect(() => {
@@ -68,7 +68,7 @@ function Home() {
             >
               📋 View Projects
             </button>
-          {showTable && <ScrollTable/>}
+          <ScrollTable/>
           </div>
         </div>
       </div>

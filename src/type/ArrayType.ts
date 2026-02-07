@@ -12,3 +12,25 @@ export interface problemType{
     title: string,
     solution: string
 }
+export interface skillType{
+    name: string, percentage: number 
+}
+export interface GrowthDataType{
+    [year: number]:{
+        year: number;
+        totalPercentage: number;
+        count: number;
+        skills: {name: string; percentage: number}[];
+        highlights: string[];
+    }
+}
+export interface Skill{
+    name: string,
+    percentage: number;
+}
+export interface  processedDataItem {
+    year: number;
+    average: number;
+    skills: Skill[];
+    highlights: string[];
+}

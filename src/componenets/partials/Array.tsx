@@ -1,5 +1,5 @@
 import { 
-  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaBootstrap,FaGithub, FaChevronLeft, FaChevronRight, FaCode, FaUser, FaRocket, FaDatabase, FaLaptopCode 
+  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaBootstrap,FaGithub, FaCode, FaUser, FaRocket, FaDatabase, FaLaptopCode 
 } from 'react-icons/fa';
 import { AiOutlineApi } from 'react-icons/ai';
 import { 
