@@ -4,16 +4,14 @@ import { useRef, useState } from "react"
 import MyContext from "../../../context/CreateContext"
 import NavbarDropdown from "./NavbarDropdown"
 import { useContext , useEffect} from "react"
+import SearchInput from "./SearchInput"
 function Navbar() {
   const [toggle , setTogglebtn ] =useState(false)
-  const [searchInput, setSearchInput] = useState(false)
   const {darkMode, setDarkMode} = useContext(MyContext)
   const handleToggle =()=>{
     setTogglebtn(prev => !prev)
   }
-  const handleSearchInput = ()=>{
-    setSearchInput(prev => !prev)
-  }
+
  const handleDarkMode = ()=>{
       setDarkMode(prev => !prev)
  }
@@ -25,10 +23,6 @@ function Navbar() {
     document.body.style.backgroundColor = "#F0F2F5";
   }
 }, [darkMode]);
-let inputs = `  mt-4 p-3 rounded-lg border outline-none transition-all duration-300 ${darkMode 
-    ? "bg-gray-800 border-gray-700 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500" 
-    : "bg-gray-50 border-gray-300 text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-  }`
   const menuRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
   const closeMenu = (e:any) => {
@@ -54,28 +48,11 @@ let inputs = `  mt-4 p-3 rounded-lg border outline-none transition-all duration-
     </span>
   ))}
 </span>
-
-  <div className="relative w-1/3 flex items-center">
-  <input 
-    type="text" 
-    className={ `responsiveInput w-full ${inputs}` }
-    placeholder="Search..." 
-  />
-  <span className={`responsiveInput absolute ${darkMode && 'text-white'} right-4 top-6 text-gray-800 text-3xl pointer-events-none`}>
-    ⌕
-  </span>
-</div>
-
-   {searchInput && <input 
-  type="text" 
-  className={` absolute top-20 z-10 right-6 w-75 ${inputs}`} 
-  placeholder="Search..." /> } 
-
  <div className=" flex gap-3">
-   <span className={`classIcon hidden text-4xl ${darkMode && 'text-white'}`}onClick={handleSearchInput}>⌕</span>
     <button onClick={handleToggle} className=" togglebtn lg:hidden xl:hidden 2xl:hidden  font-bold text-2xl text-white ">☰</button>
     </div>
-  <div ref={menuRef} className={` hidden  2xl:flex lg:flex lg:gap-6  xl:flex xl:gap-7  ${toggle ? `responsiveLink  ${darkMode ?'bg-gray-800 text-white':'bg-white'}`:'' }`}>
+  <div ref={menuRef} className={` hidden  2xl:flex lg:flex lg:gap-6 h-full items-center xl:flex xl:gap-7  ${toggle ? `responsiveLink  ${darkMode ?'bg-gray-800 text-white':'bg-white'}`:'' }`}>
+    <SearchInput/>
     <Link
       to="/"
       className={`${linkstyle} ${darkMode?"text-white":'text-black'} `}>Home </Link>

@@ -1,7 +1,7 @@
 
 import myImage from '../../assets/homepagebg.jpeg'
 import { useNavigate } from 'react-router-dom';
-import AboutInformationCards from '../partials/AboutInformationCards';
+import AboutInformationCards from './AboutInformationCards';
 import MyContext from '../../context/CreateContext';
 import { useContext } from 'react';
 

@@ -1,5 +1,5 @@
 
-import { slides } from './Array';
+import { slides } from '../partials/Array';
 import { useState } from 'react';
 
 import MyContext from '../../context/CreateContext';

@@ -85,7 +85,7 @@ const GrowthTimeline = () => {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
           <div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none">
+            <h2 className={`text-4xl md:text-6xl ${darkMode?'text-white':'text-black'} font-black tracking-tighter uppercase leading-none`}>
               Professional <br /> <span className="text-blue-600">Evolution</span>
             </h2>
             <p className="mt-4 opacity-50 font-bold uppercase tracking-widest text-xs">Skill Mastery & Roadmap Analysis (2024 - ++)</p>
@@ -109,6 +109,7 @@ const GrowthTimeline = () => {
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={darkMode ? "#1e293b" : "#e2e8f0"} />
                 <XAxis 
                   dataKey="year" 
+                  height={60}
                   axisLine={false} 
                   tickLine={false} 
                   tick={{ fill: darkMode ? '#64748b' : '#94a3b8', fontSize: 12, fontWeight: 'bold' }} 
