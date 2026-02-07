@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import '../../style/index.css'
+import '../../../style/index.css'
 import { useRef, useState } from "react"
-import MyContext from "../../context/CreateContext"
+import MyContext from "../../../context/CreateContext"
 import NavbarDropdown from "./NavbarDropdown"
 import { useContext , useEffect} from "react"
 function Navbar() {

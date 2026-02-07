@@ -23,18 +23,18 @@ const GrowthTimeline = () => {
         const res = await axios.get("http://localhost:9000/admin/getGrowthdata");
         const rawData = res.data.getresponse || [];
         
-        const grouped = rawData.reduce((acc:GrowthDataType , curr: any) => {
-          const year = curr.year;
-          if (!acc[year]) {
-            acc[year] = { year, totalPercentage: 0, count: 0, skills: [], highlights: [] };
+        const grouped = rawData.reduce((item1:GrowthDataType , itemCurr: any) => {
+          const year = itemCurr.year;
+          if (!item1[year]) {
+            item1[year] = { year, totalPercentage: 0, count: 0, skills: [], highlights: [] };
           }
-          curr.skill.forEach((s: {name: string, percentage: number}) => {
-            acc[year].skills.push(s);
-            acc[year].totalPercentage += s.percentage;
-            acc[year].count += 1;
+          itemCurr.skill.forEach((s: {name: string, percentage: number}) => {
+            item1[year].skills.push(s);
+            item1[year].totalPercentage += s.percentage;
+            item1[year].count += 1;
           });
-          if (curr.highlights) acc[year].highlights.push(...curr.highlights);
-          return acc;
+          if (itemCurr.highlights) item1[year].highlights.push(...itemCurr.highlights);
+          return item1;
         }, {});
 
         const processedData = Object.values(grouped).map((item: any) => ({

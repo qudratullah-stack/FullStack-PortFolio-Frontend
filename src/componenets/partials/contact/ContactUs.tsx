@@ -1,11 +1,11 @@
 
-import MyContext from "../context/CreateContext"
+import MyContext from "../../../context/CreateContext"
 import { useContext } from "react"
-import ContectForm from "./partials/ContectForm";
-import ContactImg from '../assets/contactPage.jpeg'
-import Footer from "./partials/Footer";
-import ScrollTable from "./partials/ScrollTable";
-import Services from "./partials/Services";
+import ContectForm from "./ContectForm";
+import ContactImg from '../../../assets/contactPage.jpeg'
+import Footer from "../Footer";
+import ScrollTable from "../ScrollTable";
+import Services from "../Services";
 function ContactUs() {
   const {darkMode , setShowTable, isServiceOpen, showTable} = useContext(MyContext)
   return (

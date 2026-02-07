@@ -5,7 +5,7 @@ import MyContext from "../context/CreateContext";
 import { skillsData } from "./partials/Array";
 import { services } from "./partials/Array";
 import aboutImage from "../assets/homepagebg.jpeg";
-import ContectForm from './partials/ContectForm'
+import ContectForm from './partials/contact/ContectForm'
 import Footer from "./partials/Footer";
 import Services from "./partials/Services";
 import ScrollTable from "./partials/ScrollTable";

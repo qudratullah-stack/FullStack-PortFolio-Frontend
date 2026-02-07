@@ -1,6 +1,6 @@
-import MyContext from "../../context/CreateContext"
+import MyContext from "../../../context/CreateContext"
 import { useContext, useState } from "react"
-import Alert from "./Alert";
+import Alert from "../Alert";
 
 function ContectForm() {
     const { 

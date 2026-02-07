@@ -19,7 +19,7 @@ function GrowthData({
 }) {
   const { darkMode, setAlert, alert, success, setSuccess, loader, setloader } = useContext(MyContext);
 
-  const [year, setYear] = useState<number>();
+  const [year, setYear] = useState<string>('');
   const [Skill, setSkill] = useState<skillType[]>([]);
   const [skillName, setSkillName] = useState("");
   const [highlights, sethighlights] = useState('');
@@ -30,10 +30,10 @@ function GrowthData({
     setSkillName('')
     setPercantage(undefined)
   };
-  const GrowthData = async()=>{
+  const SaveGrowthData = async()=>{
     try{
         setloader(true)
-        await axios.post('http://localhost:9000/admin/gorwthData',{
+        await axios.post('http://localhost:9000/admin/upsertGrowthData',{
            skill: Skill ,
             year : year ,
             highlights: highlights,
@@ -51,9 +51,9 @@ function GrowthData({
         setloader(false)
     }
   }
-  const handleSaveGrowth = ()=>{
-    GrowthData()
-    setYear(2)
+  const handleSaveGrowth = async ()=>{
+   await  SaveGrowthData()
+    setYear('')
     setSkillName('')
     setPercantage(undefined)
             setSkill([])
@@ -91,7 +91,7 @@ function GrowthData({
             type="number"
             className={inputStyle}
             value={year??''}
-            onChange={(e) => setYear(Number(e.target.value))}
+            onChange={(e) => setYear(String(e.target.value))}
             placeholder="Inter Year"
           />
             <input

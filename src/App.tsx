@@ -1,17 +1,17 @@
 import './style/App.css'
 import Home from './componenets/Home'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
-import About from './componenets/About'
-import ContactUs from './componenets/ContactUs'
+import About from './componenets/aboutportfolio/About'
+import ContactUs from './componenets/partials/contact/ContactUs'
 import ProviderContext from './context/ProviderContext'
 import Admin from './componenets/partials/Admin/Admin'
 import AllProjectData from './componenets/AllProjectData'
-import Navbar from './componenets/partials/Navbar'
+import Navbar from './componenets/partials/navbar/Navbar'
 import Blogs from './componenets/Blogs/Blogs'
 import Educational from './componenets/Blogs/Educational'
 import DetailBlogs from './componenets/Blogs/DetailBlogs'
 import DetailEducational from './componenets/Blogs/DetailEducational'
-import GrowthTimeline from './componenets/partials/GrowthTimeline'
+import GrowthTimeline from './componenets/aboutportfolio/GrowthTimeline'
 function App() {
   return (
     <>
