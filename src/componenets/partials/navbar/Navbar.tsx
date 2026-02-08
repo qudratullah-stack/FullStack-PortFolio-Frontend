@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom"
 import '../../../style/index.css'
-import { useRef, useState } from "react"
 import MyContext from "../../../context/CreateContext"
 import NavbarDropdown from "./NavbarDropdown"
-import { useContext , useEffect} from "react"
+import { useContext , useEffect, useState, useRef} from "react"
 import SearchInput from "./SearchInput"
 function Navbar() {
   const [toggle , setTogglebtn ] =useState(false)
@@ -13,8 +12,18 @@ function Navbar() {
   }
 
  const handleDarkMode = ()=>{
-      setDarkMode(prev => !prev)
+      setDarkMode(prev => {
+     const value =    !prev
+     localStorage.setItem('darkMode',JSON.stringify(value))
+     return value
+      })
  }
+ useEffect(()=>{
+  const saved = localStorage.getItem('darkMode')
+  if(saved !== null){
+    setDarkMode(JSON.parse(saved))
+  }
+ })
  const linkstyle = '    hover:text-gray-400  font-medium transition-colors  relative group hover:underline'
  useEffect(() => {
   if (darkMode) {
@@ -65,10 +74,10 @@ function Navbar() {
         <NavbarDropdown />
       <button onClick={handleDarkMode} className={`${darkMode && 'text-white'} ${linkstyle} text-2xl hover:cursor-pointer`}>{darkMode?'☼':'☾'}</button>
        <Link
-      to="/about"
+      to="/login"
       className={`${linkstyle} ${darkMode?"text-white":'text-black'} `} >Login </Link>
        <Link
-      to="/about"
+      to="/signup"
       className={`${linkstyle} ${darkMode?"text-white":'text-black'} `}>Signup </Link>
        <Link
       to="/admin/page"

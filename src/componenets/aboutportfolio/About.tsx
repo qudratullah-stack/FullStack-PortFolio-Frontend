@@ -1,6 +1,6 @@
 
 import myImage from '../../assets/homepagebg.jpeg'
-import { useNavigate } from 'react-router-dom';
+
 import AboutInformationCards from './AboutInformationCards';
 import MyContext from '../../context/CreateContext';
 import { useContext } from 'react';
@@ -8,11 +8,11 @@ import { useContext } from 'react';
 
  
 function About() {
- const navigate = useNavigate()
+ 
  const {darkMode} = useContext(MyContext)
   return (
    <>
-    <section className={`py-20 transition-colors duration-500 ${darkMode ? 'bg-[#020617] text-white' : 'bg-white text-gray-900'}`}>
+    <section className={`py-20 transition-colors duration-500 ${darkMode ? 'bg-[#020617] text-white' : '#F0F2F5 text-gray-900'}`}>
   <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 px-6">
     
     <div className="relative shrink-0">
@@ -51,9 +51,9 @@ function About() {
       </div>
     </div>
   </div>
-</section>
    <AboutInformationCards/>
-   <button onClick={()=> navigate('/growthtimeline')} className=' cursor-pointer  py-4 flex px-2 items-center mx-auto  bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-lg '>View My Growth Timeline</button>
+</section>
+  
    </>
   )
 }

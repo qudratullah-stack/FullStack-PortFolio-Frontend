@@ -18,7 +18,8 @@ const Footer = ({ showtable }: { showtable: Dispatch<SetStateAction<boolean>> })
           <ul className="space-y-3 text-sm font-medium">
             <li className="hover:text-blue-500 transition-colors"><Link to={'/'}>Home</Link></li>
             <li className="hover:text-blue-500 transition-colors"><Link to={'/contactUs'}>Contact Us</Link></li>
-            <li className="hover:text-blue-500 transition-colors cursor-pointer" onClick={() => showtable(true)}>Projects</li>
+              <li className="hover:text-blue-500 transition-colors"><Link to={'/about'}>About</Link></li>
+           
             <li>
               <button onClick={() => setisServiceOpen(true)} className="hover:text-blue-500 transition-colors">
                 Services
@@ -33,6 +34,7 @@ const Footer = ({ showtable }: { showtable: Dispatch<SetStateAction<boolean>> })
           <ul className="space-y-3 text-sm font-medium">
             <li className="hover:text-blue-500 transition-colors"><Link to={'/blog'}>Case Studies</Link></li>
             <li className="hover:text-blue-500 transition-colors"><Link to={'/learning'}>Tech Insights</Link></li>
+             <li className="hover:text-blue-500 transition-colors cursor-pointer" onClick={() => showtable(true)}>Projects</li>
           </ul>
         </div>
         <div className="flex flex-col items-center md:items-start">

@@ -12,6 +12,8 @@ import Educational from './componenets/Blogs/Educational'
 import DetailBlogs from './componenets/Blogs/DetailBlogs'
 import DetailEducational from './componenets/Blogs/DetailEducational'
 import GrowthTimeline from './componenets/aboutportfolio/GrowthTimeline'
+import Login from './authantications/Login'
+import Signup from './authantications/Signup'
 function App() {
   return (
     <>
@@ -24,6 +26,8 @@ function App() {
       <Route path='/admin/page' element={<Admin/>}/>
       <Route path='/contactUs' element={<ContactUs/>}/>
       <Route path='/blog' element={<Blogs/>}/>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/signup' element={<Signup/>}/>
       <Route path='/learning' element={<Educational/>}/>
       <Route path='/detailblogs/:id' element={<DetailBlogs/>}/>
       <Route path='/growthtimeline' element={<GrowthTimeline/>}/>

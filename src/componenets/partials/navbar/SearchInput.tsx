@@ -2,22 +2,31 @@ import { useState, useEffect, useContext } from 'react';
 import { LucideSearch, LucideX, LucideLoader2, LucideSparkles, LucideArrowRight } from 'lucide-react';
 import axios from 'axios';
 import MyContext from '../../../context/CreateContext';
-
+import Alert from '../Alert';
 function SearchInput() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [aiResponse, setAiResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { darkMode } = useContext(MyContext);
+  const { darkMode, setAlert, alert , setSuccess , success } = useContext(MyContext);
+  const [limitIndex, setLimitIndex] = useState(0)
 
   const handleSearch = async (e?: React.FormEvent | string) => {
     if (e && typeof e !== 'string') e.preventDefault();
+    if(limitIndex > 15){
+        setAlert(true)
+        setSuccess('You can only obtain website-related information here. The AI service is currently paused for 3 hours.')
+
+        const expirydate = Date.now() + (3 * 60 * 60 * 1000)
+        localStorage.setItem('ai_lock_until', expirydate.toString())
+        return 
+    }
     const queryToSend = typeof e === 'string' ? e : searchQuery;
     if (!queryToSend.trim()) return;
     setSearchQuery('')
     setIsLoading(true);
     setAiResponse(""); 
-
+    
     try {
       const response = await axios.post('http://localhost:9000/search/ai-search', {
         query: queryToSend
@@ -26,6 +35,9 @@ function SearchInput() {
       if (response.data.success) {
         const answer = response.data.answer?.choices?.[0]?.message?.content || response.data.answer;
         setAiResponse(answer);
+        const indexLimit = limitIndex + 1
+        setLimitIndex(indexLimit)
+        localStorage.setItem('ai_key',indexLimit.toString())
       }
     } catch (error) {
       setAiResponse("I apologize, but I'm having trouble connecting to my service. Please try again.");
@@ -33,6 +45,17 @@ function SearchInput() {
       setIsLoading(false);
     }
   };
+  useEffect(()=>{
+    const locktime = localStorage.getItem('ai_lock_until')
+    if(locktime){
+        if(Date.now() <  parseInt(locktime))
+            setLimitIndex(16)
+    }else{
+        localStorage.removeItem('ai_lock_until');
+        localStorage.setItem('ai_key','0')
+        setLimitIndex(0)
+    }
+  },[])
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -53,6 +76,7 @@ function SearchInput() {
 
   return (
     <>
+      {alert && <Alert message={success} darkMode={darkMode} />}
       <button 
         onClick={() => setIsOpen(true)}
         className={`p-2 rounded-full transition-all duration-300 ${
@@ -130,6 +154,7 @@ function SearchInput() {
               <div className="mt-6 flex flex-wrap gap-2 justify-center opacity-80">
                 {["Projects", "Skills", "Contact", "Growth"].map(tag => (
                   <button 
+                 
                     key={tag}
                     onClick={() => {setSearchQuery(tag); handleSearch(tag);}}
                     className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${

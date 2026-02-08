@@ -1,7 +1,7 @@
 
 import { slides } from '../partials/Array';
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import MyContext from '../../context/CreateContext';
 import { useContext } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -11,7 +11,7 @@ function AboutInformationCards() {
    const nextSlide = () => {
     setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };
-
+const navigate = useNavigate()
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };
@@ -126,6 +126,7 @@ function AboutInformationCards() {
         </div>
       </div>
       <p className="mt-8 text-sm opacity-40 font-mono uppercase tracking-widest">Slide {currentSlide + 1} of {slides.length}</p>
+       <button onClick={()=> navigate('/growthtimeline')} className=' cursor-pointer mt-5 py-4 flex px-2 items-center mx-auto  bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-lg '>Skill Growth Chart</button>
     </div>
     
    </>

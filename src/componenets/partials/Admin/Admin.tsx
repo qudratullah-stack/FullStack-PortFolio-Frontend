@@ -160,14 +160,7 @@ function Admin() {
           </button>
         </div>
       </div>
-       <button
-              className="my-auto w-50 py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-lg "
-              onClick={() => {
-                setShowTable(true);
-              }}
-            >
-              📋 View Projects
-            </button>
+    
        <div className={tableContainerStyle}>
               <div className="flex flex-col h-full">
                 <div className="p-6 border-b border-gray-500/20 flex justify-between items-center">
@@ -183,8 +176,18 @@ function Admin() {
                 </div>
               </div>
             </div>
-            <button  onClick={()=>{setGrowthTable(true)}}>Add GrowthData</button>
+            <div className="flex flex-col w-75 mx-auto gap-3 p-2">
+               <button
+              className={`${inputStyle} bg-cyan-600`}
+              onClick={() => {
+                setShowTable(true);
+              }}
+            >
+              📋 View Projects
+            </button>
+            <button className={inputStyle} onClick={()=>{setGrowthTable(true)}}>Add GrowthData</button>
              <GrowthData show = {GrowthTable} setShow = {setGrowthTable}/>
+             </div>
     </>
   );
 }

@@ -14,13 +14,17 @@ function ContactUs() {
   <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start gap-12 mt-10">
     
     <div className="w-full lg:w-1/3 flex flex-col items-center">
-  <div className={`relative p-2 rounded-2xl border ${darkMode ? 'border-gray-800 bg-gray-900' : 'border-gray-200 bg-white'} shadow-2xl overflow-hidden w-full max-w-100`}>
-  <img 
-    src={ContactImg} 
-    alt="Qudratullah" 
-    className="w-full h-75 rounded-xl object-cover object-top"
-  />
-</div>
+  <div className="relative shrink-0">
+      <div className={`w-64 h-64 md:w-80 md:h-80 rounded-[60px] overflow-hidden border-4 ${darkMode ? 'border-blue-600 shadow-[0_0_50px_rgba(37,99,235,0.2)]' : 'border-blue-600 shadow-xl'} transform rotate-3 hover:rotate-0 transition-all duration-500`}>
+        <img 
+          src={ContactImg}
+          alt="Walia Profile" 
+          className="w-full h-full object-cover"
+        />
+      </div>
+      {/* سجاوٹ کے لیے ایک پیچھے والا باکس */}
+      <div className="absolute -z-10 inset-0 bg-blue-600/20 rounded-[60px] -rotate-6"></div>
+    </div>
     <div className="mt-4 text-center lg:text-left px-2">
   <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>Qudratullah</h2>
   <p className="text-blue-500 font-medium mb-4 text-sm tracking-wide">MERN STACK DEVELOPER</p>
