@@ -1,193 +1,136 @@
 import MyContext from "../../../context/CreateContext";
 import { useContext, useState } from "react";
 import axios from "axios";
-import { type problemType } from "../../../type/ArrayType";
+import AdminForm from "./AdminForm";
 import Loading from "../Loading";
 import Alert from "../Alert";
 import GrowthData from "./GrowthData";
+import Footer from "../Footer";
+import ScrollTable from "../ScrollTable";
+import Services from "../Services";
 function Admin() {
-  const [showTable , setShowTable] = useState(false)
-  const [GrowthTable , setGrowthTable] = useState(false)
+  const [GrowthTable, setGrowthTable] = useState(false)
+  const [ViewData, setViewProjectData] = useState(false)
+  const [openId, setOpenId] = useState<string | null>(null);
+  const [boxOpen, setBoxOpen] = useState(false)
   // document style //////////
-  const { darkMode, alert, success, setSuccess, setAlert, loader, setloader } =
+  const { darkMode,  loader ,setloader ,isServiceOpen,setAlert,setShowTable, alert, setSuccess,removeProject, success, projectData} =
     useContext(MyContext);
-  const inputStyle = `w-full mt-4 p-3 rounded-lg border outline-none transition-all duration-300 
-  ${
-    darkMode
-      ? "bg-gray-800 border-gray-700 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
-      : "bg-gray-50 border-gray-300 text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-  }`;
-  // ////////////   Scrool form style
-  const tableContainerStyle = `fixed top-0 right-0 h-full w-[300px] xl:w-[500px]  md:w-[450px] shadow-2xl z-50 transition-transform duration-500 ease-in-out ${
-  showTable ? "translate-x-0" : "translate-x-full"
-} ${darkMode ? "bg-gray-800 border-l border-gray-700" : "bg-white border-l border-gray-200"}`;
-  ////// Form State ///////////
-  const [projectname, setprojectname] = useState("");
-  const [category, setcategory] = useState("");
-  const [vercelLink, setvercelLink] = useState("");
-  const [githubLink, setgithubLink] = useState("");
-  const [railwayLink, setrailwayLink] = useState("");
-  const [infomation, setinfomation] = useState("");
-  const [problemTitle, setproblem] = useState("");
-  const [solution, setsolution] = useState("");
-  const [AllProblems, setAllproblems] = useState<problemType[]>([]);
-  //   ///////////// handle button /////////////
-  const handleAddmoreproblems = () => {
-    setAllproblems([
-      ...AllProblems,
-      { title: problemTitle, solution: solution },
-    ]);
-    setproblem("");
-    setsolution("");
-  };
-  const savedata = async () => {
-    try {
-      setloader(true);
-      await axios.post("http://localhost:9000/admin/create/data", {
-        projectName: projectname,
-        category: category,
-        githubLink: githubLink,
-        vercelLink: vercelLink,
-        railwayLink: railwayLink,
-        information: infomation,
-        problem: AllProblems,
-      });
-      setloader(false);
-      setAlert(true);
-      setSuccess("Data Saved Succeffully");
-    } catch (err) {
-      setAlert(true);
-      setSuccess("Data Not Saved ");
-      console.log(err);
-    } finally {
-      setloader(false);
-    }
-  };
-  const handleSaveProject = () => {
-    savedata();
-    setprojectname("");
-    setcategory("");
-    setgithubLink("");
-    setvercelLink("");
-    setinfomation("");
-    setrailwayLink("");
-  };
-  ////////////////////////////
+  const btnStyle = 'bg-cyan-600 w-75  p-3 m-2 rounded 3xl hover:bg-cyan-900'
+ const deletData = async (id: string) => {
+  try {
+    setloader(true);
+
+    await axios.delete(`http://localhost:9000/admin/deleteData/${id}`);
+    removeProject(id)
+     setOpenId(null); 
+    setAlert(true)
+    setSuccess('One Project Data is Deleted Successfully');
+  } catch (err) {
+    setSuccess('Data is not Deleted');
+  } finally {
+    setloader(false);
+    
+  }
+};
   return (
     <>
       {alert && <Alert message={success} darkMode={darkMode} />}
-    
-      <div
-        className={`project flex flex-col w-full items-center min-h-screen p-7 transition-colors duration-500 ${darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"}`}
-      >
-        <div
-          className={`form flex flex-col w-full max-w-2xl p-8 rounded-2xl shadow-xl ${darkMode ? "bg-gray-800/50 border border-gray-700" : "bg-white"}`}
-        >
-          <h2 className="font-extrabold text-3xl mb-6 text-center tracking-tight">
-            Add <span className="text-cyan-500">New Project</span>
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              placeholder="Project Name"
-              value={projectname}
-              onChange={(e) => setprojectname(e.target.value)}
-              className={inputStyle}
-            />
-            <input
-              type="text"
-              placeholder="Category"
-              value={category}
-              onChange={(e) => setcategory(e.target.value)}
-              className={inputStyle}
-            />
-            <input
-              type="text"
-              placeholder="Vercel Link {First add https://}"
-              value={vercelLink}
-              onChange={(e) => setvercelLink(e.target.value)}
-              className={inputStyle}
-            />
-            <input
-              type="text"
-              placeholder="Github Link "
-              value={githubLink}
-              onChange={(e) => setgithubLink(e.target.value)}
-              className={inputStyle}
-            />
-            <input
-              type="text"
-              placeholder="Railway Link"
-              value={railwayLink}
-              onChange={(e) => setrailwayLink(e.target.value)}
-              className={inputStyle}
-            />
-            <input
-              type="text"
-              placeholder="Information"
-              value={infomation}
-              onChange={(e) => setinfomation(e.target.value)}
-              className={inputStyle}
-            />
+    <AdminForm/>
+      {/* ************  All Project Data For Update Delete And Get  ******************* */}
+      <div className={`fixed top-0 overflow-auto right-0 px-8 h-full w-75 xl:w-125  md:w-112.5 shadow-2xl z-50 transition-transform duration-500 ease-in-out ${ViewData ? "translate-x-0" : "translate-x-full"
+    } ${darkMode ? "bg-gray-800 border-l border-gray-700" : "bg-white border-l border-gray-200"}`}>
+        <div className="flex flex-col h-full">
+          <div className="p-6 border-b border-gray-500/20 flex justify-between items-center">
+            <h3
+              className={`font-bold ${darkMode ? "text-white" : "text-black"} text-xl`}
+            >
+              All Project
+            </h3>
+            <button
+              onClick={() => setViewProjectData(false)}
+              className="text-red-500 hover:scale-110"
+            >
+              ✕
+            </button>
           </div>
-
-          <div className="mt-8 p-4 rounded-xl border border-dashed border-gray-500">
-            <p className="text-sm font-semibold mb-2 text-cyan-500 uppercase tracking-widest">
-              Problem & Solution
-            </p>
-            <input
-              type="text"
-              placeholder="Problem Title"
-              value={problemTitle}
-              onChange={(e) => setproblem(e.target.value)}
-              className={inputStyle}
-            />
-            <textarea
-              placeholder="Problem Solution"
-              value={solution}
-              onChange={(e) => setsolution(e.target.value)}
-              className={`${inputStyle} h-32 resize-none`}
-            ></textarea>
-            <button className="border-cyan-300 p-2 my-2 hover:bg-cyan-700 cursor-pointer hover:text-white bg-cyan-600 rounded-4xl" onClick={handleAddmoreproblems}>Add More</button>
+        {projectData.map((e) => (
+  <div
+    key={e._id}
+    className="border-b border-gray-300 dark:border-gray-600 py-3"
+  >
+    {/* Selector / Header */}
+    <button
+      onClick={() => {setOpenId(openId === e._id ? null : e._id)
+        setBoxOpen(false)
+      }}
+      className={`w-full text-left font-semibold ${darkMode?'text-white':'text-black'} text-lg flex justify-between items-center hover:text-blue-500 transition`}
+    >
+      {e.projectName}
+      <span>{openId === e._id ? "▲" : "▼"}</span>
+    </button>
+    {/* Detail (only when selected) */}
+    {openId === e._id && (
+      <div className="mt-3 pl-3 relative space-y-2 text-sm">
+        <p className={darkMode?'text-white':'text-black'}><b className="text-cyan-600">Category:</b> {e.category}</p>
+        <p className={darkMode?'text-white':'text-black'}><b className="text-cyan-600">Vercel:</b> {e.vercelLink}</p>
+        <p className={darkMode?'text-white':'text-black'}><b className="text-cyan-600">GitHub:</b> {e.githubLink}</p>
+        <p className={darkMode?'text-white':'text-black'}><b className="text-cyan-600">Railway:</b> {e.railwayLink}</p>
+        <p className={darkMode?'text-white':'text-black'}><b className="text-cyan-600">id:</b> {e._id}</p>
+        <p className={darkMode?'text-white':'text-black'}><b className="text-cyan-600">Information:</b>{e.information}</p>
+        {e.problem.map((element:{title: string; solution:string; _id:string})=>(
+          <div key={element._id}>  <h2 className="font-bold text-xl text-cyan-600">{element.title}</h2>
+          <p  className={darkMode?'text-white':'text-black'}>{element.solution}</p>
           </div>
-
-          <button
-            onClick={handleSaveProject}
-            className="mt-8 w-full py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-lg transition-transform active:scale-95 shadow-lg shadow-cyan-500/20"
-          >
-            {loader ? <Loading /> : "Upload Project to Cloud"}
+        
+      ))}
+        <div className="flex gap-3 pt-2">
+            <button onClick={()=>{
+            setBoxOpen(!boxOpen)
+           
+          }} className="px-3 py-1 bg-red-500 text-white rounded">
+         Delete
           </button>
         </div>
+       {boxOpen && (
+         <div className="flex flex-col absolute top-25 items-center gap-3 pt-4 bg-red-100 border border-red-300 p-4 rounded-md text-center">
+    <p className="text-red-700 font-semibold text-sm">
+      Are you sure you want to delete this project? This action cannot be undone.
+    </p>
+    <button
+      onClick={() => deletData(e._id)}
+      className="px-4 py-2 bg-red-500 text-white font-medium rounded hover:bg-red-600 transition"
+      >
+      {loader ? <Loading /> : 'Delete'}
+    </button>
+    <button onClick={()=>{setBoxOpen(false)}} className="px-4 py-2 bg-cyan-500 text-white font-medium rounded hover:bg-cyan-600 transition">Cancle</button>
+  </div>
+)}
       </div>
-    
-       <div className={tableContainerStyle}>
-              <div className="flex flex-col h-full">
-                <div className="p-6 border-b border-gray-500/20 flex justify-between items-center">
-                  <h3 className={`font-bold ${darkMode?'text-white':'text-black'} text-xl`}>All Projects</h3>
-                  <button
-                    onClick={() => setShowTable(false)}
-                    className="text-red-500 hover:scale-110"
-                  >
-                    ✕
-                  </button>
-                </div>
-                <div className="flex-1 overflow-y-auto custom-scrollbar p-2">
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col w-75 mx-auto gap-3 p-2">
-               <button
-              className={`${inputStyle} bg-cyan-600`}
-              onClick={() => {
-                setShowTable(true);
-              }}
-            >
-              📋 View Projects
-            </button>
-            <button className={inputStyle} onClick={()=>{setGrowthTable(true)}}>Add GrowthData</button>
-             <GrowthData show = {GrowthTable} setShow = {setGrowthTable}/>
-             </div>
+    )}
+  </div>
+))}
+
+         
+
+        </div>
+      </div>
+      <div className="flex flex-col w-75 mx-auto gap-3 p-2">
+        <button
+          className={`${btnStyle} bg-cyan-600`}
+          onClick={() => {
+            setViewProjectData(true);
+          }}
+        >
+          📋 View Projects
+        </button>
+        <button className={btnStyle} onClick={() => { setGrowthTable(true) }}>Add GrowthData</button>
+        <GrowthData show={GrowthTable} setShow={setGrowthTable} />
+      </div>
+     {isServiceOpen && <Services/>}
+<ScrollTable/>
+
+             <Footer showtable = {setShowTable}/>
     </>
   );
 }

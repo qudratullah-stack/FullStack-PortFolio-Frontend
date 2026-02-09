@@ -149,16 +149,8 @@ function Home() {
               performance and security.
             </p>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-gray-900/50 p-4 rounded-xl border border-gray-800">
-                <h4 className="text-blue-400 font-bold">Education</h4>
-                <p
-                  className={`${darkMode ? "text-gray-400" : "text-black"} text-sm`}
-                >
-                  BSCS (Ongoing) - AIOU
-                </p>
-              </div>
-              <div className="bg-gray-900/50 p-4 rounded-xl border border-gray-800">
+            <div className="grid grid-cols-1 gap-4 ">
+              <div className="bg-gray-900/50 p-4 rounded-xl w-full border border-gray-800">
                 <h4 className="text-blue-400 font-bold">Location</h4>
                 <p
                   className={`${darkMode ? "text-gray-400" : "text-black"} text-sm`}

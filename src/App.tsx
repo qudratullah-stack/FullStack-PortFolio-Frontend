@@ -1,6 +1,6 @@
 import './style/App.css'
 import Home from './componenets/Home'
-import { Route, Routes, BrowserRouter } from 'react-router-dom'
+import { Route, Routes, BrowserRouter, useLocation } from 'react-router-dom'
 import About from './componenets/aboutportfolio/About'
 import ContactUs from './componenets/partials/contact/ContactUs'
 import ProviderContext from './context/ProviderContext'
@@ -14,30 +14,43 @@ import DetailEducational from './componenets/Blogs/DetailEducational'
 import GrowthTimeline from './componenets/aboutportfolio/GrowthTimeline'
 import Login from './authantications/Login'
 import Signup from './authantications/Signup'
+
+// یہ فنکشن چیک کرے گا کہ نیو بار دکھانا ہے یا نہیں
+const NavbarWrapper = () => {
+  const location = useLocation();
+  const hideNavbarPaths = ['/login', '/signup'];
+
+  if (hideNavbarPaths.includes(location.pathname)) {
+    return null;
+  }
+
+  return <Navbar />;
+};
+
 function App() {
   return (
     <>
-    <BrowserRouter>
-      <ProviderContext>
-        <Navbar/>
-    <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/about' element={<About/>}/>
-      <Route path='/admin/page' element={<Admin/>}/>
-      <Route path='/contactUs' element={<ContactUs/>}/>
-      <Route path='/blog' element={<Blogs/>}/>
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/signup' element={<Signup/>}/>
-      <Route path='/learning' element={<Educational/>}/>
-      <Route path='/detailblogs/:id' element={<DetailBlogs/>}/>
-      <Route path='/growthtimeline' element={<GrowthTimeline/>}/>
-      <Route path='/learningblogdetail/:id' element={<DetailEducational/>}/>
-      <Route path='/allProjectdata/:id' element={<AllProjectData/>}/>
-    
-   </Routes>
-   </ProviderContext>
+      <BrowserRouter>
+        <ProviderContext>
+          <NavbarWrapper />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/admin/page' element={<Admin />} />
+            <Route path='/contactUs' element={<ContactUs />} />
+            <Route path='/blog' element={<Blogs />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
+            <Route path='/learning' element={<Educational />} />
+            <Route path='/detailblogs/:id' element={<DetailBlogs />} />
+            <Route path='/growthtimeline' element={<GrowthTimeline />} />
+            <Route path='/learningblogdetail/:id' element={<DetailEducational />} />
+            <Route path='/allProjectdata/:id' element={<AllProjectData />} />
+          </Routes>
+        </ProviderContext>
       </BrowserRouter>
     </>
   )
 }
+
 export default App

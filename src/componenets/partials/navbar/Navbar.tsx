@@ -1,11 +1,13 @@
-import { Link } from "react-router-dom"
+
 import '../../../style/index.css'
 import MyContext from "../../../context/CreateContext"
+import { Link } from 'react-router-dom'
 import NavbarDropdown from "./NavbarDropdown"
 import { useContext , useEffect, useState, useRef} from "react"
 import SearchInput from "./SearchInput"
 function Navbar() {
   const [toggle , setTogglebtn ] =useState(false)
+ 
   const {darkMode, setDarkMode} = useContext(MyContext)
   const handleToggle =()=>{
     setTogglebtn(prev => !prev)
@@ -45,7 +47,7 @@ function Navbar() {
 }, [toggle]);
   return (
     <>
-<div className={`flex justify-between items-center px-3 h-25 py-4 gap-3 bg-cyan-700 shadow-lg ${darkMode && 'bg-gray-950 '} `}>
+ <div className={`flex justify-between items-center px-3 h-25 py-4 gap-3 bg-cyan-700 shadow-lg ${darkMode && 'bg-gray-950 '} `}>
  <span className="flex gap-0.8 font-bold text-xl">
   {"</> MasoomCodes".split("").map((char, index) => (
     <span
@@ -60,7 +62,7 @@ function Navbar() {
  <div className=" flex gap-3">
     <button onClick={handleToggle} className=" togglebtn lg:hidden xl:hidden 2xl:hidden  font-bold text-2xl text-white ">☰</button>
     </div>
-  <div ref={menuRef} className={` hidden  2xl:flex lg:flex lg:gap-6 h-full items-center xl:flex xl:gap-7  ${toggle ? `responsiveLink  ${darkMode ?'bg-gray-800 text-white':'bg-white'}`:'' }`}>
+  <div ref={menuRef} className={` hidden  2xl:flex lg:flex lg:gap-6  items-center xl:flex xl:gap-7  ${toggle ? `responsiveLink  ${darkMode ?'bg-gray-800 text-white':'bg-white'}`:'' }`}>
     <SearchInput/>
     <Link
       to="/"

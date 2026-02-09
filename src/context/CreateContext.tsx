@@ -20,6 +20,8 @@ const MyContext = createContext<contextTypes>({
   isServiceOpen: false,
   setisServiceOpen: ()=>{},
    showTable: false, 
-     setShowTable: ()=>{}
+     setShowTable: ()=>{},
+     setProjectData: ()=>{},
+     removeProject: (id: string) => {}
 });
 export default MyContext;

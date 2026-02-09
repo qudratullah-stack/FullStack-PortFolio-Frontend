@@ -20,4 +20,6 @@ export interface contextTypes{
      setisServiceOpen:  Dispatch<SetStateAction<boolean>>
      showTable: boolean, 
      setShowTable: Dispatch<SetStateAction<boolean>>
+     setProjectData: Dispatch<SetStateAction<any[]>>
+     removeProject: (id: string) => void
 }

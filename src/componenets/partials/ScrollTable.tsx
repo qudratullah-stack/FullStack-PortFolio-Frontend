@@ -11,7 +11,7 @@
       : "border-gray-100 hover:bg-gray-50 text-gray-600"
   }`;
 
- const tableContainerStyle = `fixed top-0 right-0 h-full w-[300px] xl:w-[500px]  md:w-[450px] shadow-2xl z-50 transition-transform duration-500 ease-in-out ${
+ const tableContainerStyle = `fixed top-0 overflow-auto right-0 h-full w-[300px] xl:w-[500px]  md:w-[450px] shadow-2xl z-50 transition-transform duration-500 ease-in-out ${
   showTable ? "translate-x-0" : "translate-x-full"
 } ${darkMode ? "bg-gray-800 border-l border-gray-700" : "bg-white border-l border-gray-200"}`;
    

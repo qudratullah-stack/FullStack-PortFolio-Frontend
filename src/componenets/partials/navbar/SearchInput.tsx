@@ -98,7 +98,7 @@ function SearchInput() {
 
           <div className="w-full max-w-3xl transform animate-in slide-in-from-bottom-8 duration-500">
             {/* Search Input */}
-            <form onSubmit={handleSearch} className={`relative flex items-center p-2 rounded-3xl border-2 transition-all shadow-2xl ${
+            <form onSubmit={handleSearch} className={`relative mt-7 flex items-center p-2 rounded-3xl border-2 transition-all shadow-2xl ${
               darkMode ? 'bg-gray-900 border-gray-700 focus-within:border-blue-500' : 'bg-white border-gray-100 focus-within:border-blue-400'
             }`}>
               <div className="pl-4 text-blue-500">
@@ -110,7 +110,7 @@ function SearchInput() {
                 placeholder="Ask Qudrat's Assistant anything..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className={`w-full p-4 md:text-2xl font-medium outline-none bg-transparent ${
+                className={`w-full p-4 md:text-2xl  font-medium outline-none bg-transparent ${
                   darkMode ? 'text-white' : 'text-gray-900'
                 }`}
               />

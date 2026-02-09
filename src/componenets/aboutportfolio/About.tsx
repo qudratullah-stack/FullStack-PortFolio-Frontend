@@ -4,12 +4,12 @@ import myImage from '../../assets/homepagebg.jpeg'
 import AboutInformationCards from './AboutInformationCards';
 import MyContext from '../../context/CreateContext';
 import { useContext } from 'react';
-
-
- 
+import Footer from '../partials/Footer';
+import ScrollTable from '../partials/ScrollTable';
+import Services from '../partials/Services';
 function About() {
  
- const {darkMode} = useContext(MyContext)
+ const {darkMode,setShowTable, isServiceOpen} = useContext(MyContext)
   return (
    <>
     <section className={`py-20 transition-colors duration-500 ${darkMode ? 'bg-[#020617] text-white' : '#F0F2F5 text-gray-900'}`}>
@@ -41,7 +41,8 @@ function About() {
         I specialize in building production-ready web applications, focusing on clean architecture, 
         high performance, and scalable real-world solutions.
       </p>
-      
+      <ScrollTable/>
+      {isServiceOpen && <Services/>}
       <div className="flex flex-wrap justify-center md:justify-start gap-3 pt-4">
         {['React', 'Node.js', 'MongoDB', 'Tailwind'].map((skill) => (
           <span key={skill} className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-tighter border ${darkMode ? 'border-gray-800 bg-gray-900/50' : 'border-gray-200 bg-gray-50'}`}>
@@ -53,7 +54,8 @@ function About() {
   </div>
    <AboutInformationCards/>
 </section>
-  
+ <Footer showtable = {setShowTable}/>
+
    </>
   )
 }

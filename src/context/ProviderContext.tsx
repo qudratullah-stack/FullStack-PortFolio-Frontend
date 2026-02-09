@@ -21,11 +21,14 @@ function ProviderContext({children}:{children:React.ReactNode}) {
     const newdata = res.data.getresponse
     setProjectData(newdata)
     }catch(err){
-      setAlert(true)
+     
       setSuccess('Failed get data')
     }finally{
       setloader(false)
     }
+  }
+  const removeProject =  (id: string) =>{
+    setProjectData(prev => prev.filter(item => item._id !==id))
   }
   useEffect(()=>{
     getpojectdata()
@@ -39,10 +42,9 @@ function ProviderContext({children}:{children:React.ReactNode}) {
            email: contactEmail,
             message : contactMessage
         })
-        setAlert(true)
         setSuccess('Message Send Successfully')
       }catch(err){
-        setAlert(true)
+       
         setSuccess("Message Can't Send ")
       }finally{
         setloader(false)
@@ -56,7 +58,7 @@ function ProviderContext({children}:{children:React.ReactNode}) {
     return ()=> clearInterval(intervel)}
    },[alert])
   return (
-    <MyContext.Provider value={{darkMode ,projectData, setDarkMode, alert, setAlert,loader,setloader, success, setSuccess, contactName, setContactName, contactEmail, setContactEmail , contactMessage, setContactMessage,contactUs, isServiceOpen , setisServiceOpen, showTable, setShowTable}}>
+    <MyContext.Provider value={{darkMode ,removeProject,projectData, setDarkMode, alert, setAlert,loader,setloader, success, setSuccess, contactName, setContactName, contactEmail, setContactEmail , contactMessage, setContactMessage,contactUs, isServiceOpen , setisServiceOpen, showTable, setShowTable,setProjectData}}>
 
         {children}
 
