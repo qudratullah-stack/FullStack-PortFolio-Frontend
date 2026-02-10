@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import NavbarDropdown from "./NavbarDropdown"
 import { useContext , useEffect, useState, useRef} from "react"
 import SearchInput from "./SearchInput"
+import { jwtDecode } from 'jwt-decode'
+import {type tokenType } from '../../../type/ArrayType'
 function Navbar() {
   const [toggle , setTogglebtn ] =useState(false)
  
@@ -45,6 +47,18 @@ function Navbar() {
   document.addEventListener('mousedown', closeMenu);
   return () => document.removeEventListener('mousedown', closeMenu);
 }, [toggle]);
+const getRoleform = ()=>{
+  const token = localStorage.getItem('token')
+  if(!token) return null
+  try{
+    const decode = jwtDecode<tokenType>(token)
+    return decode.role;
+  }catch(err){
+    return null
+  }
+}
+const role = getRoleform()
+
   return (
     <>
  <div className={`flex justify-between items-center px-3 h-25 py-4 gap-3 bg-cyan-700 shadow-lg ${darkMode && 'bg-gray-950 '} `}>
@@ -62,28 +76,28 @@ function Navbar() {
  <div className=" flex gap-3">
     <button onClick={handleToggle} className=" togglebtn lg:hidden xl:hidden 2xl:hidden  font-bold text-2xl text-white ">☰</button>
     </div>
-  <div ref={menuRef} className={` hidden  2xl:flex lg:flex lg:gap-6  items-center xl:flex xl:gap-7  ${toggle ? `responsiveLink  ${darkMode ?'bg-gray-800 text-white':'bg-white'}`:'' }`}>
+  <div ref={menuRef} className={` hidden  2xl:flex lg:flex lg:gap-6  items-center xl:flex xl:gap-7  ${toggle ? `responsiveLink  ${darkMode ?'bg-gray-800 text-white':' text-gray-300'}`:'' }`}>
     <SearchInput/>
     <Link
       to="/"
-      className={`${linkstyle} ${darkMode?"text-white":'text-black'} `}>Home </Link>
+      className={`${linkstyle} ${darkMode?"text-white":'text-gray-300'} `}>Home </Link>
      <Link
       to="/contactUs"
-      className={`${linkstyle} ${darkMode?"text-white":'text-black'} `}>Contact Us</Link>
+      className={`${linkstyle} ${darkMode?"text-white":'text-gray-300'} `}>Contact Us</Link>
     <Link
       to="/about"
-      className={`${linkstyle} ${darkMode?"text-white":'text-black'} `} >About </Link>
+      className={`${linkstyle} ${darkMode?"text-white":'text-gray-300'} `} >About </Link>
         <NavbarDropdown />
-      <button onClick={handleDarkMode} className={`${darkMode && 'text-white'} ${linkstyle} text-2xl hover:cursor-pointer`}>{darkMode?'☼':'☾'}</button>
+      <button onClick={handleDarkMode} className={`${darkMode ?'text-white': 'text-gray-300'} ${linkstyle} text-2xl hover:cursor-pointer`}>{darkMode?'☼':'☾'}</button>
        <Link
       to="/login"
-      className={`${linkstyle} ${darkMode?"text-white":'text-black'} `} >Login </Link>
+      className={`${linkstyle} ${darkMode?"text-white":'text-gray-300'} `} >Login </Link>
        <Link
       to="/signup"
-      className={`${linkstyle} ${darkMode?"text-white":'text-black'} `}>Signup </Link>
-       <Link
+      className={`${linkstyle} ${darkMode?"text-white":'text-gray-300'} `}>Signup </Link>
+      {role === 'admin' && ( <Link
       to="/admin/page"
-      className={`${linkstyle} ${darkMode?"text-white":'text-black'} `}>Dashboard</Link>
+      className={`${linkstyle} ${darkMode?"text-white":'text-gray-300'} `}>Dashboard</Link>)}
   </div>
 
 </div>

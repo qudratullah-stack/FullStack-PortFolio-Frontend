@@ -20,8 +20,12 @@ function Admin() {
  const deletData = async (id: string) => {
   try {
     setloader(true);
-
-    await axios.delete(`http://localhost:9000/admin/deleteData/${id}`);
+     const token = localStorage.getItem('token')
+    await axios.delete(`https://fullstack-portfolio-api-production.up.railway.app/admin/deleteData/${id}`,{
+      headers:{
+        Authorization:`Bearer ${token}`
+      }
+    });
     removeProject(id)
      setOpenId(null); 
     setAlert(true)

@@ -11,7 +11,7 @@ function NavbarDropdown() {
       <div className="relative">
       <button 
         onClick={() => setOpen(!open)}
-        className={`px-4 ${darkMode ? 'bg-gray-950 text-white': 'bg-cyan-700 text-black'}   rounded-lg  font-medium cursor-pointer`}
+        className={`px-4 ${darkMode ? 'bg-gray-950 text-white': 'bg-cyan-700 text-gray-300'}   rounded-lg  font-medium cursor-pointer`}
       >
         Resources ▼
       </button>

@@ -20,7 +20,7 @@ const GrowthTimeline = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:9000/admin/getGrowthdata");
+        const res = await axios.get("https://fullstack-portfolio-api-production.up.railway.app/admin/getGrowthdata");
         const rawData = res.data.getresponse || [];
         
         const grouped = rawData.reduce((item1:GrowthDataType , itemCurr: any) => {

@@ -28,7 +28,7 @@ function SearchInput() {
     setAiResponse(""); 
     
     try {
-      const response = await axios.post('http://localhost:9000/search/ai-search', {
+      const response = await axios.post('https://fullstack-portfolio-api-production.up.railway.app/search/ai-search', {
         query: queryToSend
       });
 
@@ -80,7 +80,7 @@ function SearchInput() {
       <button 
         onClick={() => setIsOpen(true)}
         className={`p-2 rounded-full transition-all duration-300 ${
-          darkMode ? 'hover:bg-gray-800 text-white' : 'hover:bg-gray-100 text-gray-950'
+          darkMode ? 'hover:bg-gray-800 text-white' : 'hover:bg-gray-100 text-gray-300'
         }`}
       >
         <LucideSearch size={25} />

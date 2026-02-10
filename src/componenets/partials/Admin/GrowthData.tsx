@@ -37,7 +37,11 @@ function GrowthData({
   const SaveGrowthData = async () => {
     try {
       setloader(true)
-      await axios.post('http://localhost:9000/admin/upsertGrowthData', {
+      const token = localStorage.getItem('token')
+      await axios.post('https://fullstack-portfolio-api-production.up.railway.app/admin/upsertGrowthData', {
+          headers:{
+        Authorization:`Bearer ${token}`
+      },
         skill: Skill,
         year: year,
         highlights: highlights,
@@ -52,18 +56,20 @@ function GrowthData({
     }
   }
   const handleSaveGrowth = async () => {
+    setloader(true)
     await SaveGrowthData()
     setYear('')
     setSkillName('')
     setPercantage(undefined)
     setSkill([])
     sethighlights('')
+    setloader(false)
 
   }
   const getGrowthData = async () => {
     try {
-      setloader(true)
-      const res = await axios.get('http://localhost:9000/admin/getGrowthdata')
+     
+      const res = await axios.get('https://fullstack-portfolio-api-production.up.railway.app/admin/getGrowthdata')
       setGetData(res.data.getresponse)
     } catch (err) {
       setAlert(true)
@@ -75,7 +81,13 @@ function GrowthData({
   }, [])
   const deletegrowth = async(id:string)=>{
     try{
-      await axios.delete(`http://localhost:9000/admin/deleteGrowthdata/${id}`)
+      setloader(true)
+      const token = localStorage.getItem('token')
+      await axios.delete(`https://fullstack-portfolio-api-production.up.railway.app/admin/deleteGrowthdata/${id}`,{
+          headers:{
+        Authorization:`Bearer ${token}`
+      }
+      })
       setGetData(prev => prev.filter(item => item._id !== id))
       setAlert(true)
       setSuccess('One Growth Year Data is Deleted Successfully')

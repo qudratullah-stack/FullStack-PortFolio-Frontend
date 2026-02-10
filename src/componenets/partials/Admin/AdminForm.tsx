@@ -28,8 +28,11 @@ function AdminForm() {
   };
   const savedata = async () => {
     try {
-      setloader(true);
-      await axios.post("http://localhost:9000/admin/create/data", {
+    const token = localStorage.getItem('token')
+      await axios.post("https://fullstack-portfolio-api-production.up.railway.app/admin/create/data", {
+          headers:{
+        Authorization:`Bearer ${token}`
+      },
         projectName: projectname,
         category: category,
         githubLink: githubLink,
@@ -49,14 +52,16 @@ function AdminForm() {
       setloader(false);
     }
   };
-     const handleSaveProject = () => {
-    savedata();
+     const handleSaveProject = async() => {
+      setloader(true)
+   await savedata();
     setprojectname("");
     setcategory("");
     setgithubLink("");
     setvercelLink("");
     setinfomation("");
     setrailwayLink("");
+    setloader(false)
   };
    const inputStyle = `w-full mt-4 p-3 rounded-lg border outline-none transition-all duration-300 
   ${darkMode

@@ -10,7 +10,7 @@ function DetailBlogs() {
     const { id } = useParams()
     const navigate = useNavigate()
     const blog = Caseblogs.find(e => e.id === id)
- if (!blog) return <div className="text-center py-20">Blog not found!</div>
+ if (!blog) return <div className="text-center text-4xl text-cyan-600 py-20">Blog not found!</div>
 
     return (
         <>

@@ -5,8 +5,9 @@ import { useContext, useState } from 'react'
 import Footer from '../partials/Footer'
 import Services from '../partials/Services'
 import ScrollTable from '../partials/ScrollTable'
+import Alert from '../partials/Alert'
 function Blogs() {
-    const {darkMode, showTable , setShowTable, isServiceOpen} = useContext(MyContext)
+    const {darkMode, showTable , setShowTable,setAlert, alert, setSuccess, success, isServiceOpen} = useContext(MyContext)
     const [pagelength , setPagelength] = useState(1)
     const [addIndex , setaddIndex] = useState('→ Read More')
     const [lessIndex , setLessIndex] = useState('← Previous')
@@ -32,9 +33,11 @@ function Blogs() {
             setLessIndex('No Previous')
         }
     }
+    const token = localStorage.getItem('token')
     const navigate = useNavigate()
   return (
    <>
+    {alert && <Alert message={success} darkMode={darkMode} />}
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
   {filterData.map((item) => (
     <div 
@@ -83,7 +86,15 @@ function Blogs() {
 
         {/* Action Button */}
         <div className="mt-auto">
-          <button onClick={()=>{navigate(`/detailblogs/${item.id}`)}} className={`w-full font-bold py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 border ${
+          <button onClick={()=>{
+            if(!token){
+              navigate('/login')
+              setAlert(true)
+              setSuccess('Please log in to continue.')
+            }else{
+              navigate('/detailblogs/${item.id}')
+            }
+          }} className={`w-full font-bold py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 border ${
             darkMode 
             ? 'bg-green-600/10 text-green-500 border-green-500/20 hover:bg-green-600 hover:text-white' 
             : 'bg-green-50 text-green-600 border-green-100 hover:bg-green-600 hover:text-white'

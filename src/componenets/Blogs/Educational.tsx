@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom"
 import Services from "../partials/Services"
 import ScrollTable from "../partials/ScrollTable"
 import Footer from "../partials/Footer"
+import Alert from "../partials/Alert"
 function Educational() {
     const navigate = useNavigate()
-    const {darkMode, showTable, setShowTable , isServiceOpen} = useContext(MyContext)
+    const {darkMode, showTable, setShowTable ,setAlert, setSuccess, alert, success, isServiceOpen} = useContext(MyContext)
      const [pagelength , setPagelength] = useState(1)
         const [addIndex , setaddIndex] = useState('→ Read More')
         const [lessIndex , setLessIndex] = useState('← Previous')
@@ -33,8 +34,10 @@ function Educational() {
                 setLessIndex('No Previous')
             }
         }
+        const token = localStorage.getItem('token')
   return (
   <>
+   {alert && <Alert message={success} darkMode={darkMode} />}
      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
   {filterData.map((item) => (
     <div 
@@ -78,7 +81,16 @@ function Educational() {
             </div>
           ))}
         </div>
-        <div onClick={()=>{navigate(`/learningblogdetail/${item.id}`)}} className="mt-auto">
+       
+        <div onClick={()=>{
+          if(!token){
+            navigate('/login')
+            setAlert(true)
+            setSuccess('Please log in to continue')
+          }else{
+            navigate(` /learningblogdetail/${item.id}`)
+          }
+        }} className="mt-auto">
           <button className={`w-full font-bold py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 border ${
             darkMode 
             ? 'bg-green-600/10 text-green-500 border-green-500/20 hover:bg-green-600 hover:text-white' 

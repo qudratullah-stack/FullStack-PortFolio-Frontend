@@ -34,3 +34,8 @@ export interface  processedDataItem {
     skills: Skill[];
     highlights: string[];
 }
+export interface tokenType{
+    role: string;
+    id: string;
+    email: string;
+}

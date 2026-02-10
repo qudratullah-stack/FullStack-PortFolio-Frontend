@@ -17,7 +17,7 @@ function Signup() {
   const createAccount = async()=>{
     try{
       setloader(true)
-      await axios.post('http://localhost:9000/auth/signup',{
+      await axios.post('https://fullstack-portfolio-api-production.up.railway.app/auth/signup',{
          name: name,
             email: email,
             password: password

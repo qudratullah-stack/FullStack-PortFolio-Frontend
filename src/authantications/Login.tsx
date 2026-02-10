@@ -20,12 +20,15 @@ const [emailBorder, setemailborder] = useState(false)
 const saveLogin = async()=>{
   try{
     setloader(true)
-    await axios.post('http://localhost:9000/auth/login',{
+   const res =  await axios.post('https://fullstack-portfolio-api-production.up.railway.app/auth/login',{
         email: Email,
         password: Password
     })
+   const token =  res.data.token
+    localStorage.setItem('token',token)
     setAlert(true)
     setSuccess('Account Maked Successfully')
+    navigate('/')
   }catch(err){
     setAlert(true)
     setSuccess('Invalid credentials')
@@ -42,7 +45,6 @@ const handleLogin = ()=>{
         return
       }
   saveLogin()
-  setEmail('')
   setPassword('')
 }
   return (
@@ -68,7 +70,7 @@ const handleLogin = ()=>{
           </div>
           <div className="relative">
             <LucideLock className="absolute left-3 top-3.5 text-gray-400" size={18} />
-            <input type="password" placeholder="Password" value={Password} onChange={(e)=>{setPassword(e.target.value)}} className={inputStyle} required />
+            <input type="password" placeholder="Password" value={Password} onChange={(e)=>{setPassword(e.target.value)}} className={inputStyle}  />
           </div>
     
           <button 

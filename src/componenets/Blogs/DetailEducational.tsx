@@ -12,7 +12,7 @@ function DetailEducational() {
 
     const data = EducationalData.find(e => e.id === id)
 
-    if (!data) return <div className="text-center py-20 font-bold">Article Not Found!</div>
+    if (!data) return <div className="text-center text-4xl text-cyan-500 py-20 font-bold">Article Not Found!</div>
 
     return (
         <>

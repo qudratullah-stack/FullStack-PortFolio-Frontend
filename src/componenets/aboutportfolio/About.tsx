@@ -12,7 +12,7 @@ function About() {
  const {darkMode,setShowTable, isServiceOpen} = useContext(MyContext)
   return (
    <>
-    <section className={`py-20 transition-colors duration-500 ${darkMode ? 'bg-[#020617] text-white' : '#F0F2F5 text-gray-900'}`}>
+    <section className={`py-20 transition-colors duration-500 ${darkMode ? 'bg-[#131728] text-white' : '#F0F2F5 text-gray-900'}`}>
   <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 px-6">
     
     <div className="relative shrink-0">
@@ -45,7 +45,7 @@ function About() {
       {isServiceOpen && <Services/>}
       <div className="flex flex-wrap justify-center md:justify-start gap-3 pt-4">
         {['React', 'Node.js', 'MongoDB', 'Tailwind'].map((skill) => (
-          <span key={skill} className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-tighter border ${darkMode ? 'border-gray-800 bg-gray-900/50' : 'border-gray-200 bg-gray-50'}`}>
+          <span key={skill} className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-tighter border ${darkMode ? 'border-gray-800 bg-[#131728]' : 'border-gray-200 bg-gray-50'}`}>
             {skill}
           </span>
         ))}

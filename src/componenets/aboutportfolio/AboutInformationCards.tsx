@@ -17,7 +17,7 @@ const navigate = useNavigate()
   };
   return (
    <>
-     <div className={`w-full min-h-screen flex flex-col items-center justify-center p-4 pt-20 transition-colors duration-500 ${darkMode ? 'bg-[#020617] text-white' : 'bg-gray-100 text-gray-900'}`}>
+     <div className={`w-full min-h-screen flex flex-col items-center justify-center p-4 pt-20 transition-colors duration-500 ${darkMode ? 'bg-[#131728] text-white' : 'bg-gray-100 text-gray-900'}`}>
       
       <div className={`relative w-full max-w-5xl h-137.5 rounded-[40px] overflow-hidden shadow-2xl border ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'}`}>
         
@@ -126,7 +126,7 @@ const navigate = useNavigate()
         </div>
       </div>
       <p className="mt-8 text-sm opacity-40 font-mono uppercase tracking-widest">Slide {currentSlide + 1} of {slides.length}</p>
-       <button onClick={()=> navigate('/growthtimeline')} className=' cursor-pointer mt-5 py-4 flex px-2 items-center mx-auto  bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-lg '>Skill Growth Chart</button>
+       <button onClick={()=> navigate('/growthtimeline')} className=' cursor-pointer mt-5 py-4 flex px-4 items-center mx-auto  bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-lg '>Skill Growth Chart</button>
     </div>
     
    </>

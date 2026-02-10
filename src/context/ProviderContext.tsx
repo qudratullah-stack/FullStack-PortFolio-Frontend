@@ -15,8 +15,8 @@ function ProviderContext({children}:{children:React.ReactNode}) {
      const [showTable, setShowTable] = useState(false);
   const getpojectdata = async ()=>{
     try{
-      setloader(true)
-    const res = await axios.get('http://localhost:9000/admin/get/data')
+
+    const res = await axios.get('https://fullstack-portfolio-api-production.up.railway.app/admin/get/data')
        
     const newdata = res.data.getresponse
     setProjectData(newdata)
@@ -37,7 +37,7 @@ function ProviderContext({children}:{children:React.ReactNode}) {
     const contactUs = async()=>{
       try{
         setloader(true)
-        await axios.post('http://localhost:9000/admin/contactus',{
+        await axios.post('https://fullstack-portfolio-api-production.up.railway.app/admin/contactus',{
           name: contactName,
            email: contactEmail,
             message : contactMessage
