@@ -45,7 +45,7 @@ function About() {
       {isServiceOpen && <Services/>}
       <div className="flex flex-wrap justify-center md:justify-start gap-3 pt-4">
         {['React', 'Node.js', 'MongoDB', 'Tailwind'].map((skill) => (
-          <span key={skill} className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-tighter border ${darkMode ? 'border-gray-800 bg-[#131728]' : 'border-gray-200 bg-gray-50'}`}>
+          <span key={skill} className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-tighter border ${darkMode ? 'border-gray-800 bg-gray-900/50' : 'border-gray-200 bg-gray-50'}`}>
             {skill}
           </span>
         ))}

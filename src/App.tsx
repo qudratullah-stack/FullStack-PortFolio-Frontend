@@ -15,7 +15,6 @@ import GrowthTimeline from './componenets/aboutportfolio/GrowthTimeline'
 import Login from './authantications/Login'
 import Signup from './authantications/Signup'
 
-// یہ فنکشن چیک کرے گا کہ نیو بار دکھانا ہے یا نہیں
 const NavbarWrapper = () => {
   const location = useLocation();
   const hideNavbarPaths = ['/login', '/signup'];
