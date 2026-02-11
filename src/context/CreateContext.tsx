@@ -22,6 +22,6 @@ const MyContext = createContext<contextTypes>({
    showTable: false, 
      setShowTable: ()=>{},
      setProjectData: ()=>{},
-     removeProject: (id: string) => {}
+     removeProject: () => {}
 });
 export default MyContext;
