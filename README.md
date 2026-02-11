@@ -122,10 +122,78 @@ This section presents a **short highlight video** of the project, demonstrating 
 - Helps recruiters quickly understand your work
 
 <p align="center">
-  <video width="80%" controls autoplay muted>
-    <source src="public/Finalchecklist.mp4" type="video/mp4">
+ Https://github.com/qudratullah-stack/FullStack-portfolio-frontend/raw/main/public/Finalchecklist.mp4
     Your browser does not support the video tag.
   </video>
 </p>
 
 > ✅ Provides a visual summary of the project in action, enhancing your portfolio's impact.
+
+---
+
+## 🛠 Install Dependencies
+
+To run this backend project, install the required packages using:
+
+```bash
+# Initialize project (if not already)
+npm init -y
+
+# Install dependencies
+npm install 
+
+# Start the development Server:
+```baxh
+npm run dev
+
+```
+
+---
+
+### 📂 Folder Structure
+Here is the recommended folder structure for this Frontend part:
+``` bach
+-    frontend/
+-    │
+-    ├── public/               # Static files (images, favicon, robots.txt)
+-    │   └── contactPage.jpeg
+-    │
+-    |
+-    │
+-    ├── src/
+-    │   ├── assets/            # Images, icons, audio, videos
+-    │   ├── components/         # React components
+-    │   │   ├── Home/
+-    │   │   ├──  Blogs/         # Blogs.tsx, DetailBlogs.tsx, DetailEducation.tsx, Education.tsx
+-    │   │   ├── json/            # blog.json, educational.json
+-    │   │   └── partials/  
+-    │   │         │ 
+-    │   │         ├── Admin/             # Admin.tsx, AdminForm.tsx, GrowthData.tsx
+-    │   │         ├── contact/       # ContactUs.tsx, ContactForm.tsx
+-    │   │         ├── aboutPortfolio/    # About.tsx, AboutinformatonCards.tsx, GrowthTimeline.tsx
+-    │   │         ├── navbar/         #Navbar.tsx, NavbarDropdown.tsx, SearchInput.tsx
+-    │   │         │ 
+-    │   │         │
+-    │   │         └── Array.tsx
+-    │   │          └──Footer.tsx
+-    │   │          └──Loading.tsx
+-    │   │          └──ScrollTable.tsx
+-    │   │          └──Services.tsx
+-    │   │          └──Alert.tsx
+-    │   │           ── authantications/
+-    │   |                        ├── Login.tsx
+-    │   |                       ├── Signup.tsx
+-    │   │
+-    │   ├── context/          # React Context API for state management
+-    │   ├── Home.tsx
+-    │   ├── AllProjectData.tsx
+-    │   ├── Type         # ArrayType.ts, ContextType.ts
+-    │   ├── styles/           # CSS/Tailwind files
+-    │   ├── App.tsx
+-    │   └── main.tsx
+-    │
+-    ├── .env                  # Environment variables
+-    ├── package.json
+-    ├── tsconfig.json
+-    ├── tailwind.config.js
+-    └── README.md
