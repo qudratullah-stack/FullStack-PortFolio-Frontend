@@ -121,11 +121,9 @@ This section presents a **short highlight video** of the project, demonstrating 
 - Shows main frontend features and interactions
 - Helps recruiters quickly understand your work
 
-<p align="center">
- Https://github.com/qudratullah-stack/FullStack-portfolio-frontend/raw/main/public/Finalchecklist.mp4
-    Your browser does not support the video tag.
-  </video>
-</p>
+---
+https://github.com/qudratullah-stack/FullStack-PortFolio-Frontend/raw/main/public/Finalchecklist.mp4
+---
 
 > ✅ Provides a visual summary of the project in action, enhancing your portfolio's impact.
 
