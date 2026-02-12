@@ -88,7 +88,7 @@ function Educational() {
             setAlert(true)
             setSuccess('Please log in to continue')
           }else{
-            navigate(` /learningblogdetail/${item.id}`)
+            navigate(`/learningblogdetail/${item.id}`)
           }
         }} className="mt-auto">
           <button className={`w-full font-bold py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 border ${

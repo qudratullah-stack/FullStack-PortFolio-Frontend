@@ -78,7 +78,7 @@ function Blogs() {
         {/* Tech Stack - Small Pills */}
         <div className="flex flex-wrap gap-2 mb-6">
           {item.techStack?.map((tech, idx) => (
-            <span key={idx} className="text-[10px] bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-md">
+            <span key={idx} className="text-[10px] text-cyan-300 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-md">
               {tech}
             </span>
           ))}
@@ -92,7 +92,7 @@ function Blogs() {
               setAlert(true)
               setSuccess('Please log in to continue.')
             }else{
-              navigate('/detailblogs/${item.id}')
+              navigate(`/detailblogs/${item.id}`)
             }
           }} className={`w-full font-bold py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 border ${
             darkMode 

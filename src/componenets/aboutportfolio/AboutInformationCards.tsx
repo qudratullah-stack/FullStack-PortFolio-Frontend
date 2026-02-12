@@ -26,7 +26,7 @@ const navigate = useNavigate()
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
         >
           {slides.map((slide, index) => (
-            <div key={slide.id} className="min-w-full h-full flex items-center justify-center p-8 md:p-16">
+            <div key={slide.id} className="min-w-full h-full flex items-center overflow-auto justify-center p-8 md:p-16">
               
               <div className="w-full text-center">
                 {slide.type === "hero" && (

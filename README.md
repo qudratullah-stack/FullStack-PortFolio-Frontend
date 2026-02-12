@@ -127,11 +127,7 @@ This section presents a **short highlight video** of the project, demonstrating 
 
 ---
 
-<p align="center">
-<video src="https://github.com/qudratullah-stack/FullStack-PortFolio-Frontend/raw/main/public/Finalchecklist.mp4" width="100%"  controls>
-Your browser does not support the video tag.
-</video>
-</p>
+![Project Demo](/public/project-demo.gif)
 
 
 
