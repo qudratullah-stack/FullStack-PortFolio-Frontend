@@ -41,6 +41,10 @@ Backend responsibilities:
 ```bash
 https://github.com/qudratullah-stack/FullStack-portfolio-api
 ```
+### Vercel Link
+```bash
+full-stack-port-folio-frontend-ehdt.vercel.app
+```
 ## 🔐 Authentication (Login & Signup)
 
 The application includes a complete authentication system with proper validation and feedback.
@@ -124,7 +128,7 @@ This section presents a **short highlight video** of the project, demonstrating 
 ---
 
 <p align="center">
-<video src="https://github.com/qudratullah-stack/FullStack-PortFolio-Frontend/raw/main/public/Finalchecklist.mp4" width="100%" controls>
+<video src="https://github.com/qudratullah-stack/FullStack-PortFolio-Frontend/raw/main/public/Finalchecklist.mp4" width="100%"  controls>
 Your browser does not support the video tag.
 </video>
 </p>

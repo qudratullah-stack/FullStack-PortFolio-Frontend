@@ -76,7 +76,7 @@ const role = getRoleform()
  <div className=" flex gap-3">
     <button onClick={handleToggle} className=" togglebtn lg:hidden xl:hidden 2xl:hidden  font-bold text-2xl text-white ">☰</button>
     </div>
-  <div ref={menuRef} className={` hidden  2xl:flex lg:flex lg:gap-6  items-center xl:flex xl:gap-7  ${toggle ? `responsiveLink  ${darkMode ?'bg-gray-800 text-white':'bg-white text-gray-300'}`:'' }`}>
+  <div ref={menuRef} className={` hidden  2xl:flex lg:flex lg:gap-6  items-center xl:flex xl:gap-7  ${toggle ? `responsiveLink  ${darkMode ?'bg-gray-800 text-white':'bg-cyan-700 text-gray-300'}`:'' }`}>
     <SearchInput/>
     <Link
       to="/"
