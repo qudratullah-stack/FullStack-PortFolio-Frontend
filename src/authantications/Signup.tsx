@@ -17,7 +17,7 @@ function Signup() {
   const createAccount = async()=>{
     try{
       setloader(true)
-      await axios.post('https://fullstack-portfolio-api-production.up.railway.app/auth/signup',{
+      await axios.post('https://visiting-rochelle-qudratmasoom-d9c95190.koyeb.app/auth/signup',{
          name: name,
             email: email,
             password: password

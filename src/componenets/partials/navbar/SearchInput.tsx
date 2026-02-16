@@ -28,7 +28,7 @@ function SearchInput() {
     setAiResponse(""); 
     
     try {
-      const response = await axios.post('https://fullstack-portfolio-api-production.up.railway.app/search/ai-search', {
+      const response = await axios.post('https://visiting-rochelle-qudratmasoom-d9c95190.koyeb.app/search/ai-search', {
         query: queryToSend
       });
 

@@ -21,7 +21,7 @@ function Admin() {
   try {
     setloader(true);
      const token = localStorage.getItem('token')
-    await axios.delete(`https://fullstack-portfolio-api-production.up.railway.app/admin/deleteData/${id}`,{
+    await axios.delete(`https://visiting-rochelle-qudratmasoom-d9c95190.koyeb.app/admin/deleteData/${id}`,{
       headers:{
         Authorization:`Bearer ${token}`
       }
