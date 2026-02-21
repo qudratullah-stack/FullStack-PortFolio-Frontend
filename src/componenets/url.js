@@ -1,1 +1,0 @@
-export const Beackend_Url = 'https://visiting-rochelle-qudratmasoom-d9c95190.koyeb.app'

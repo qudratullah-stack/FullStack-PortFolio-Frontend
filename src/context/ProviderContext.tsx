@@ -16,7 +16,7 @@ function ProviderContext({children}:{children:React.ReactNode}) {
   const getpojectdata = async ()=>{
     try{
 
-    const res = await axios.get('https://visiting-rochelle-qudratmasoom-d9c95190.koyeb.app/admin/get/data')
+    const res = await axios.get(`${import.meta.env.VITE_BEACKEND_URL}/admin/get/data`)
        
     const newdata = res.data.getresponse
     setProjectData(newdata)
@@ -37,7 +37,7 @@ function ProviderContext({children}:{children:React.ReactNode}) {
     const contactUs = async()=>{
       try{
         setloader(true)
-        await axios.post('https://visiting-rochelle-qudratmasoom-d9c95190.koyeb.app/contactus',{
+        await axios.post(`${import.meta.env.VITE_BEACKEND_URL}/contactus`,{
           name: contactName,
            email: contactEmail,
             message : contactMessage

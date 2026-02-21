@@ -29,7 +29,7 @@ function AdminForm() {
   const savedata = async () => {
     try {
     const token = localStorage.getItem('token')
-      await axios.post("https://visiting-rochelle-qudratmasoom-d9c95190.koyeb.app/admin/create/data", {
+      await axios.post(`${import.meta.env.VITE_BEACKEND_URL}/admin/create/data`, {
           headers:{
         Authorization:`Bearer ${token}`
       },

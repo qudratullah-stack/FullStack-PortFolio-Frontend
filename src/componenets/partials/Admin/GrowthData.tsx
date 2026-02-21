@@ -38,7 +38,7 @@ function GrowthData({
     try {
       setloader(true)
       const token = localStorage.getItem('token')
-      await axios.post('https://visiting-rochelle-qudratmasoom-d9c95190.koyeb.app/admin/upsertGrowthData', {
+      await axios.post(`${import.meta.env.VITE_BEACKEND_URL}/admin/upsertGrowthData`, {
           headers:{
         Authorization:`Bearer ${token}`
       },
@@ -69,7 +69,7 @@ function GrowthData({
   const getGrowthData = async () => {
     try {
      
-      const res = await axios.get('https://visiting-rochelle-qudratmasoom-d9c95190.koyeb.app/admin/getGrowthdata')
+      const res = await axios.get(`${import.meta.env.VITE_BEACKEND_URL}/admin/getGrowthdata`)
       setGetData(res.data.getresponse)
     } catch (err) {
       setAlert(true)
@@ -83,7 +83,7 @@ function GrowthData({
     try{
       setloader(true)
       const token = localStorage.getItem('token')
-      await axios.delete(`https://visiting-rochelle-qudratmasoom-d9c95190.koyeb.app/admin/deleteGrowthdata/${id}`,{
+      await axios.delete(`${import.meta.env.VITE_BEACKEND_URL}/admin/deleteGrowthdata/${id}`,{
           headers:{
         Authorization:`Bearer ${token}`
       }
