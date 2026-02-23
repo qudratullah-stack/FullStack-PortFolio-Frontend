@@ -20,9 +20,7 @@ function ContectForm() {
         return
        }
     contactUs();
-    setContactEmail('')
-    setContactName('')
-    setContactMessage('')
+   
    
   };
  
