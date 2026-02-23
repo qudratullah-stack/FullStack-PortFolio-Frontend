@@ -21,7 +21,7 @@ function ProviderContext({children}:{children:React.ReactNode}) {
     const newdata = res.data.getresponse
     setProjectData(newdata)
     }catch(err){
-     
+     setAlert(true)
       setSuccess('Failed get data')
     }finally{
       setloader(false)
@@ -42,9 +42,10 @@ function ProviderContext({children}:{children:React.ReactNode}) {
            email: contactEmail,
             message : contactMessage
         })
+        setAlert(true)
         setSuccess('Message Send Successfully')
       }catch(err){
-       
+       setAlert(true)
         setSuccess("Message Can't Send ")
       }finally{
         setloader(false)
