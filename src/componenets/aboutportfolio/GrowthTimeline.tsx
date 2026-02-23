@@ -20,7 +20,7 @@ const GrowthTimeline = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("https://visiting-rochelle-qudratmasoom-d9c95190.koyeb.app/admin/getGrowthdata");
+        const res = await axios.get(`${import.meta.env.VITE_BEACKEND_URL}/admin/getGrowthdata`);
         const rawData = res.data.getresponse || [];
         
         const grouped = rawData.reduce((item1:GrowthDataType , itemCurr: any) => {

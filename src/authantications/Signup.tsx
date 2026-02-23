@@ -17,7 +17,7 @@ function Signup() {
   const createAccount = async()=>{
     try{
       setloader(true)
-      await axios.post('https://visiting-rochelle-qudratmasoom-d9c95190.koyeb.app/auth/signup',{
+      await axios.post(`${import.meta.env.VITE_BEACKEND_URL}/auth/signup`,{
          name: name,
             email: email,
             password: password

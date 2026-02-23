@@ -28,7 +28,7 @@ function SearchInput() {
     setAiResponse(""); 
     
     try {
-      const response = await axios.post('https://visiting-rochelle-qudratmasoom-d9c95190.koyeb.app/search/ai-search', {
+      const response = await axios.post(`${import.meta.env.VITE_BEACKEND_URL}/search/ai-search`, {
         query: queryToSend
       });
 

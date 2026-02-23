@@ -20,7 +20,7 @@ const [emailBorder, setemailborder] = useState(false)
 const saveLogin = async()=>{
   try{
     setloader(true)
-   const res =  await axios.post('https://visiting-rochelle-qudratmasoom-d9c95190.koyeb.app/auth/login',{
+   const res =  await axios.post(`${import.meta.env.VITE_BEACKEND_URL}/auth/login`,{
         email: Email,
         password: Password
     })
