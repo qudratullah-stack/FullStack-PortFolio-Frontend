@@ -10,7 +10,7 @@ function ContectForm() {
     contactUs, loader, success , alert, darkMode, setAlert, setSuccess
   } = useContext(MyContext)
   const [inputborder, setInputborder] = useState(false)
-    const handleSubmit = (e:any) => {
+    const handleSubmit = async (e:any) => {
       e.preventDefault();
        let inputtextmatch = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
        if(!inputtextmatch.test(contactEmail)){
@@ -19,8 +19,10 @@ function ContectForm() {
         setSuccess('Please enter a valid email address')
         return
        }
-    contactUs();
-   
+   await contactUs();
+    setContactEmail('')
+    setContactName('')
+    setContactMessage('')
    
   };
  
@@ -67,7 +69,7 @@ function ContectForm() {
             required
           ></textarea>
         </div>
-        <button onClick={handleSubmit} className={`w-full  bg-cyan-600 hover:bg-cyan-500 py-3 rounded-lg font-bold transition-all duration-300 flex justify-center items-center`}>
+        <button type="submit" className={`w-full  bg-cyan-600 hover:bg-cyan-500 py-3 rounded-lg font-bold transition-all duration-300 flex justify-center items-center`}>
          { loader?'Sending...': "Send Message"}
         </button>
       {alert && success === "Message Send Successfully" && (

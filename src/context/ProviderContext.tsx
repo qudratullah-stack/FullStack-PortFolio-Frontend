@@ -37,7 +37,7 @@ function ProviderContext({children}:{children:React.ReactNode}) {
     const contactUs = async()=>{
       try{
         setloader(true)
-        await axios.post(`${import.meta.env.VITE_BEACKEND_URL}/contactus`,{
+        await axios.post(`${import.meta.env.VITE_BEACKEND_URL}/admin/contactus`,{
           name: contactName,
            email: contactEmail,
             message : contactMessage
